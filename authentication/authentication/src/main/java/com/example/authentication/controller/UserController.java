@@ -7,6 +7,7 @@ import com.example.authentication.dao.UserDao;
 import com.example.authentication.entity.Entreprise;
 import com.example.authentication.entity.Role;
 import com.example.authentication.entity.User;
+import com.example.authentication.service.EmailSenderService;
 import com.example.authentication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,8 +58,38 @@ public class UserController {
 
     @PostMapping("/AddNewUser")
     public User registerNewUser(@RequestBody RegistrationRequest request) {
-        return userService.AddNewUser(request.getUser(), request.getRoleName() ,request.getEntrepriseName());
+        String pass = request.getUser().getUserPassword();
+
+           // User newUser = userService.AddNewUser(request.getUser(), request.getRoleName(), request.getEntrepriseName());
+            Optional<User> optionalUser = userDao.findById(request.getUser().getCin());
+
+            // Check if the user is present
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+
+                String candidateEmail = user.getEmail();
+                senderService.sendSimpleEmail(candidateEmail,
+                        "Validation du Compte",
+                        "Bonjour " + user.getUserFirstName() + " " + user.getUserLastName() + ",\n\n" +
+                                "Bienvenue au sein de notre entreprise !  \n\n\" "+
+                                "C'est avec un immense plaisir que nous vous annonçons votre intégration à notre équipe. \n" +
+                                "Nous sommes véritablement enchantés de vous accueillir parmi nous et nous espérons sincèrement que vous tirerez pleinement profit de votre expérience au sein de notre entreprise !\n" +
+                                "Votre demande a été confirmée et nous avons hâte de partager cette balade avec vous. \n"+
+                                "Votre participation est très appréciée, et nous pensons que votre présence contribuera positivement .\n\n" +
+                                "Voici vos identifiants pour accéder à notre plateforme :\n\n" +
+                                "Email : " + user.getEmail() + "\n" +
+                                "Mot de Passe : " + pass+ "\n\n" +
+                                "Rh Teams"  + ",\n" +
+                                request.getEntrepriseName());
+
+                // Assuming "dash" is the view name to be displayed after the acceptance process
+
+            }
+                return  userService.AddNewUser(request.getUser(), request.getRoleName(), request.getEntrepriseName());
+
+
     }
+
 
 
     @PutMapping("/updateUserRole/{id}")
@@ -201,5 +232,62 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }}
 
+    @PutMapping("/desarchiveGRH/{id}")
+    public ResponseEntity<String> DarchiveUserById(@PathVariable int id) {
+        // Fetch the existing user by ID
+        Optional<User> userOptional = userDao.findById(id);
 
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            // Update user roles to 'Archiver'
+            Role role = roleDao.findById("GRH").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
+
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(role);
+            user.setRole(userRoles);
+
+            // Set entreprise etat to -1
+            user.getEntreprise().forEach(entreprise -> entreprise.setEtat(1));
+
+            userDao.save(user);
+            return ResponseEntity.ok("User desarchived successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }}
+    @Autowired
+    private EmailSenderService senderService;
+
+
+    @PostMapping("/SendConfirmation/{id}")
+    public ResponseEntity<String> SendConfirmation (@PathVariable int id) {
+        try {
+            // Check if the user already exists
+            Optional<User> optionalUser = userDao.findById(id);
+
+
+            if (optionalUser.isPresent()) {
+                User User = optionalUser.get();
+
+                String candidateEmail = User.getEmail();
+                senderService.sendSimpleEmail(candidateEmail,
+                        "Confirmation and Activation of Your Account",
+                        "Dear " + User.getUserFirstName() + " " + User.getUserLastName() + ",\n\n" +
+                                "Welcome to our platform! We are excited to have you as a new member of our community.\n\n" +
+                                "Your account has been successfully created and activated. Below are your login credentials:\n" +
+
+                                "Thank you for joining us. We look forward to your active participation and contribution.\n\n" +
+                                "Best regards,\n" +
+                                "The Platform Team");
+
+              return ResponseEntity.ok("Email sent successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found ");
+            }
+        } catch (Exception e) {
+            // Log the exception or return an error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error sending email");
+        }
+
+    }
 }

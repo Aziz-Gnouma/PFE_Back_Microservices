@@ -59,6 +59,17 @@ private  EntrepriseDao EntrepriseDao;
         userRole.setRoleDescription("Default role for newly created record");
         roleDao.save(userRole);
 
+        Role RHRole = new Role();
+        RHRole.setRoleName("GRH");
+        RHRole.setRoleDescription("Default role for newly created record");
+        roleDao.save(RHRole);
+
+        Role SGRHRole = new Role();
+        SGRHRole.setRoleName("SGRH");
+        SGRHRole.setRoleDescription("Default role for newly created record");
+        roleDao.save(SGRHRole);
+
+
         Role ArchiverRole = new Role();
         ArchiverRole.setRoleName("Archiver");
         ArchiverRole.setRoleDescription("Default role for newly created record");
@@ -84,9 +95,9 @@ private  EntrepriseDao EntrepriseDao;
         adminUser.setPhoneNumber(23679560);
         adminUser.setAddress("nabeul");
         adminUser.setLocality("Nabeul");
-        Set<Role> GerantRoles = new HashSet<>();
-        GerantRoles.add(GerantRole);
-        adminUser.setRole(GerantRoles);
+        Set<Role> AdminRole = new HashSet<>();
+        AdminRole.add(adminRole);
+        adminUser.setRole(AdminRole);
         Entreprise entreprise = EntrepriseDao.findById("Medianet").get();
 
         Set<Entreprise> userEntreprise = new HashSet<>();
@@ -148,6 +159,10 @@ private  EntrepriseDao EntrepriseDao;
         if (entrepriseName == null || entrepriseName.isEmpty()) {
             throw new IllegalArgumentException("Entreprise name cannot be null or empty");
         }
+        if (userDao.existsByEmail(user.getEmail()) || userDao.existsByCin(user.getCin())) {
+            throw new RuntimeException("User with the provided email or cin already exists");
+        }
+
         Entreprise entreprise = EntrepriseDao.findById(entrepriseName).get();
         Set<Entreprise> userEntreprise = new HashSet<>();
         userEntreprise.add(entreprise);
