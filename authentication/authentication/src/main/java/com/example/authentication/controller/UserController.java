@@ -1,9 +1,7 @@
 package com.example.authentication.controller;
 
-import com.example.authentication.dao.RegistrationRequest;
-import com.example.authentication.dao.RoleDao;
-import com.example.authentication.dao.EntrepriseDao;
-import com.example.authentication.dao.UserDao;
+import com.example.authentication.dao.*;
+import com.example.authentication.entity.Employe;
 import com.example.authentication.entity.Entreprise;
 import com.example.authentication.entity.Role;
 import com.example.authentication.entity.User;
@@ -31,11 +29,10 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserDao userDao;
-
     @Autowired
     private EntrepriseDao EntrepriseDao;
-
-
+    @Autowired
+    private EmployeDao EmployeDao;
     @Autowired
     private RoleDao roleDao;
 
@@ -56,50 +53,62 @@ public class UserController {
         }
     }
 
+    @PostMapping("/registerNewEmploye/{id}")
+    public ResponseEntity<?> registerNewUserV2(@PathVariable String id, @RequestBody Employe updatedEmploye) {
+        try {
+            ResponseEntity<?> registeredEmploye = userService.registerNewUserV2(id,updatedEmploye);
+            return ResponseEntity.ok(registeredEmploye);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
     @PostMapping("/AddNewUser")
-    public User registerNewUser(@RequestBody RegistrationRequest request) {
-        String pass = request.getUser().getUserPassword();
+    public ResponseEntity<User> registerNewUser(@RequestBody RegistrationRequest request) {
+        String password = request.getUser().getUserPassword();
 
-           // User newUser = userService.AddNewUser(request.getUser(), request.getRoleName(), request.getEntrepriseName());
-            Optional<User> optionalUser = userDao.findById(request.getUser().getCin());
+        try {
+            // Register the new user
+            User newUser = userService.AddNewUser(request.getUser(),  request.getRoleName(), request.getEntrepriseName());
 
-            // Check if the user is present
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
+            String candidateEmail = newUser.getEmail();
 
-                String candidateEmail = user.getEmail();
-                senderService.sendSimpleEmail(candidateEmail,
-                        "Validation du Compte",
-                        "Bonjour " + user.getUserFirstName() + " " + user.getUserLastName() + ",\n\n" +
-                                "Bienvenue au sein de notre entreprise !  \n\n\" "+
-                                "C'est avec un immense plaisir que nous vous annonçons votre intégration à notre équipe. \n" +
-                                "Nous sommes véritablement enchantés de vous accueillir parmi nous et nous espérons sincèrement que vous tirerez pleinement profit de votre expérience au sein de notre entreprise !\n" +
-                                "Votre demande a été confirmée et nous avons hâte de partager cette balade avec vous. \n"+
-                                "Votre participation est très appréciée, et nous pensons que votre présence contribuera positivement .\n\n" +
-                                "Voici vos identifiants pour accéder à notre plateforme :\n\n" +
-                                "Email : " + user.getEmail() + "\n" +
-                                "Mot de Passe : " + pass+ "\n\n" +
-                                "Rh Teams"  + ",\n" +
-                                request.getEntrepriseName());
+            senderService.sendSimpleEmail(candidateEmail,
+                    "Validation du Compte",
+                    "Bonjour " + newUser.getUserFirstName() + " " + newUser.getUserLastName() + ",\n\n" +
+                            "Bienvenue au sein de notre entreprise !\n\n" +
+                            "C'est avec un immense plaisir que nous vous annonçons votre intégration à notre équipe.\n" +
+                            "Nous sommes véritablement enchantés de vous accueillir parmi nous et nous espérons sincèrement que vous tirerez pleinement profit de votre expérience au sein de notre entreprise !\n" +
+                            "Votre demande a été confirmée et nous avons hâte de partager cette balade avec vous.\n" +
+                            "Votre participation est très appréciée, et nous pensons que votre présence contribuera positivement.\n\n" +
+                            "Voici vos identifiants pour accéder à notre plateforme :\n\n" +
+                            "Email : " + newUser.getEmail() + "\n" +
+                            "Mot de Passe : " + password + "\n\n" +
+                            "Rh Teams" + ",\n" +
+                            request.getEntrepriseName());
 
-                // Assuming "dash" is the view name to be displayed after the acceptance process
-
-            }
-                return  userService.AddNewUser(request.getUser(), request.getRoleName(), request.getEntrepriseName());
-
-
+            // Return the newly registered user with HTTP status 200 OK
+            return ResponseEntity.ok(newUser);
+        } catch (Exception e) {
+            // Log the exception or return an error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 
 
+
+
+
+
     @PutMapping("/updateUserRole/{id}")
-    public ResponseEntity<String> updateUserById(@PathVariable int id,@RequestBody RegistrationRequest request) {
+    public ResponseEntity<String> updateUserById(@PathVariable String id,@RequestBody RegistrationRequest request) {
         return userService.updateUserById(id, request.getUser(), request.getRoleName());
     }
 
 
     @PutMapping("/updateUser/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable int id, @RequestBody User updatedUser) {
+    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         return userService.updateUser(id, updatedUser);
 
     }
@@ -112,6 +121,11 @@ public class UserController {
     public List<User> getAllUsers() {
         return userDao.findAll();
     }
+
+    @GetMapping("/AllEmployes")
+    public List<Employe> getAllEmployes() {
+        return EmployeDao.findAll();
+    }
     @GetMapping("/AllUsers/Admin")
     public List<User> getAllAdminUsers() {
         return userDao.findAll().stream()
@@ -119,8 +133,14 @@ public class UserController {
                         .anyMatch(role -> "Gerant".equals(role.getRoleName())))
                 .collect(Collectors.toList());
     }
+    @GetMapping("/Employe/{id}")
+    public Optional<Employe> getEmployeById(@PathVariable String id) {
+        return EmployeDao.findById(id);
+
+    }
+
     @GetMapping("/user/{id}")
-    public Optional<User> getUserById(@PathVariable int id) {
+    public Optional<User> getUserById(@PathVariable String id) {
         return userDao.findById(id);
 
     }
@@ -142,7 +162,7 @@ public class UserController {
     }
 
     @PostMapping("/ActiverUser/{id}")
-    public ResponseEntity<String> ActiverUser(@PathVariable int id) {
+    public ResponseEntity<String> ActiverUser(@PathVariable String id) {
         Optional<User> userOptional = userDao.findById(id);
 
         if (userOptional.isPresent()) {
@@ -164,7 +184,7 @@ public class UserController {
 
 
     @DeleteMapping("/delete/{id}/entreprise/{entrepriseId}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") int id, @PathVariable("entrepriseId") String entrepriseId) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") String id, @PathVariable("entrepriseId") String entrepriseId) {
         // Check if the user exists
         Optional<User> userOptional = userDao.findById(id);
         if (userOptional.isPresent()) {
@@ -186,7 +206,7 @@ public class UserController {
         }
     }
     @PutMapping("/archiveUser/{id}")
-    public ResponseEntity<String> archiveUserById(@PathVariable int id) {
+    public ResponseEntity<String> archiveUserById(@PathVariable String id) {
         // Fetch the existing user by ID
         Optional<User> userOptional = userDao.findById(id);
 
@@ -209,7 +229,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }}
     @PutMapping("/desarchiveUser/{id}")
-    public ResponseEntity<String> BackarchiveUserById(@PathVariable int id) {
+    public ResponseEntity<String> BackarchiveUserById(@PathVariable String id) {
         // Fetch the existing user by ID
         Optional<User> userOptional = userDao.findById(id);
 
@@ -222,6 +242,7 @@ public class UserController {
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(role);
             user.setRole(userRoles);
+            user.setEmail(null);
 
             // Set entreprise etat to -1
             user.getEntreprise().forEach(entreprise -> entreprise.setEtat(1));
@@ -232,8 +253,10 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }}
 
+
+
     @PutMapping("/desarchiveGRH/{id}")
-    public ResponseEntity<String> DarchiveUserById(@PathVariable int id) {
+    public ResponseEntity<String> DarchiveUserById(@PathVariable String id) {
         // Fetch the existing user by ID
         Optional<User> userOptional = userDao.findById(id);
 
@@ -255,12 +278,36 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build();
         }}
+
+    @PutMapping("/desarchiveEmploye/{id}")
+    public ResponseEntity<String> DarchiveEmployeById(@PathVariable String id) {
+        // Fetch the existing user by ID
+        Optional<User> userOptional = userDao.findById(id);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            // Update user roles to 'Archiver'
+            Role role = roleDao.findById("User").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
+
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(role);
+            user.setRole(userRoles);
+            user.setEmail(null);
+
+
+
+            userDao.save(user);
+            return ResponseEntity.ok("User desarchived successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }}
     @Autowired
     private EmailSenderService senderService;
 
 
     @PostMapping("/SendConfirmation/{id}")
-    public ResponseEntity<String> SendConfirmation (@PathVariable int id) {
+    public ResponseEntity<String> SendConfirmation (@PathVariable String id) {
         try {
             // Check if the user already exists
             Optional<User> optionalUser = userDao.findById(id);

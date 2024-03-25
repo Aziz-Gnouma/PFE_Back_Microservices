@@ -12,15 +12,76 @@ public class User {
 
     private String email;
 
+    private String Private_email;
+
     private String userFirstName;
     private String userLastName;
-    @Id
+
     @Column(name = "CIN")
     private int cin;
     private String userPassword;
 
     private String civility;
-    private Integer matricule;
+    @Id
+    private String matricule;
+    @JsonFormat(pattern="dd-MM-yyyy")
+
+    private Date dateOfBirth;
+    private String placeOfBirth;
+    private String nationality;
+    private String gender;
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private Date cinDate;
+    private Integer phoneNumber;
+    private String address;
+    private String pays;
+    private  String CodePostal;
+    public String getCodePostal() {
+        return CodePostal;
+    }
+    private String niveauEtude;
+
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private Date dateDernierDiplome;
+
+    public String getNiveauEtude() {
+        return niveauEtude;
+    }
+
+    public void setNiveauEtude(String niveauEtude) {
+        this.niveauEtude = niveauEtude;
+    }
+
+    public Date getDateDernierDiplome() {
+        return dateDernierDiplome;
+    }
+
+    public void setDateDernierDiplome(Date dateDernierDiplome) {
+        this.dateDernierDiplome = dateDernierDiplome;
+    }
+
+    public void setCodePostal(String codePostal) {
+        CodePostal = codePostal;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLE",
+            joinColumns = {
+                    @JoinColumn(name = "USER_ID")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "ROLE_ID")
+            }
+    )
+    private Set<Role> role;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "USER__ENTREPRISE",
+            joinColumns = {@JoinColumn(name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ENTREPRISE_ID")}
+    )
+    private Set<Entreprise> entreprise;
 
     public String getCivility() {
         return civility;
@@ -30,11 +91,11 @@ public class User {
         this.civility = civility;
     }
 
-    public Integer getMatricule() {
+    public String getMatricule() {
         return matricule;
     }
 
-    public void setMatricule(Integer matricule) {
+    public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
     @JsonFormat(pattern="dd-MM-yyyy")
@@ -94,44 +155,21 @@ public class User {
         this.address = address;
     }
 
-    public String getLocality() {
-        return locality;
+    public String getPays() {
+        return pays;
     }
 
-    public void setLocality(String locality) {
-        this.locality = locality;
+    public void setPays(String pays) {
+        this.pays = pays;
     }
 
-    private Date dateOfBirth;
-    private String placeOfBirth;
-    private String nationality;
-    private String gender;
-    @JsonFormat(pattern="dd-MM-yyyy")
-    private Date cinDate;
-    private Integer phoneNumber;
-    private String address;
-    private String locality;
+    public String getPrivate_email() {
+        return Private_email;
+    }
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
-            joinColumns = {
-                    @JoinColumn(name = "USER_ID")
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
-            }
-    )
-    private Set<Role> role;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "USER__ENTREPRISE",
-            joinColumns = {@JoinColumn(name = "USER_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "ENTREPRISE_ID")}
-    )
-    private Set<Entreprise> entreprise;
-
+    public void setPrivate_email(String private_email) {
+        Private_email = private_email;
+    }
 
     // Getter and setter for userFirstName field
     public String getUserFirstName() {

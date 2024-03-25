@@ -13,7 +13,78 @@ public class Entreprise {
     private String entrepriseName;
     private String entrepriseDescription;
 
+    private Date dateInscriptionRegistreCommerce;
+    private String affiliationCaisseSociale;
+    private String numeroSecuriteSocial;
+    private String numeroCompteBancaire;
+    private String assurance;
+    private String emailAssurance;
+    private String telAssurance;
+    private String numeroAffiliationAssurance;
 
+    public Date getDateInscriptionRegistreCommerce() {
+        return dateInscriptionRegistreCommerce;
+    }
+
+    public void setDateInscriptionRegistreCommerce(Date dateInscriptionRegistreCommerce) {
+        this.dateInscriptionRegistreCommerce = dateInscriptionRegistreCommerce;
+    }
+
+    public String getAffiliationCaisseSociale() {
+        return affiliationCaisseSociale;
+    }
+
+    public void setAffiliationCaisseSociale(String affiliationCaisseSociale) {
+        this.affiliationCaisseSociale = affiliationCaisseSociale;
+    }
+
+    public String getNumeroSecuriteSocial() {
+        return numeroSecuriteSocial;
+    }
+
+    public void setNumeroSecuriteSocial(String numeroSecuriteSocial) {
+        this.numeroSecuriteSocial = numeroSecuriteSocial;
+    }
+
+    public String getNumeroCompteBancaire() {
+        return numeroCompteBancaire;
+    }
+
+    public void setNumeroCompteBancaire(String numeroCompteBancaire) {
+        this.numeroCompteBancaire = numeroCompteBancaire;
+    }
+
+    public String getAssurance() {
+        return assurance;
+    }
+
+    public void setAssurance(String assurance) {
+        this.assurance = assurance;
+    }
+
+    public String getEmailAssurance() {
+        return emailAssurance;
+    }
+
+    public void setEmailAssurance(String emailAssurance) {
+        this.emailAssurance = emailAssurance;
+    }
+
+    public String getTelAssurance() {
+        return telAssurance;
+    }
+
+    public void setTelAssurance(String telAssurance) {
+        this.telAssurance = telAssurance;
+    }
+
+    public String getNumeroAffiliationAssurance() {
+        return numeroAffiliationAssurance;
+    }
+
+    public void setNumeroAffiliationAssurance(String numeroAffiliationAssurance) {
+        this.numeroAffiliationAssurance = numeroAffiliationAssurance;
+    }
 
     public String getVille() {
         return ville;
