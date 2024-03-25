@@ -1,12 +1,20 @@
 package com.example.Carriere.service;
 
+import com.example.Carriere.entity.Avancement;
 import com.example.Carriere.entity.Carriere;
+import com.example.Carriere.entity.Structure;
+import com.example.Carriere.entity.Titularisation;
+import com.example.Carriere.repository.Avancement_repo;
 import com.example.Carriere.repository.Carriere_repo;
+import com.example.Carriere.repository.Structure_repo;
+import com.example.Carriere.repository.Titularisation_repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +22,61 @@ import java.util.Optional;
 public class Carrier_service {
     @Autowired
     private  Carriere_repo Carriere_repo;
+    @Autowired
+    private Titularisation_repo Titularisation_repo;
+    @Autowired
+    private Structure_repo Structure_repo;
+    @Autowired
+    private Avancement_repo  Avancement_repo;
 
 
-    public ResponseEntity<String> create( Carriere Carriere) {
-        Optional<Carriere> existingCarriere = Carriere_repo.findById(Carriere.getCin());
-        if (existingCarriere.isPresent()) {
-            throw new RuntimeException("Carriere with the provided cin already exists");
+    public List<Object[]> getDataByMatricule(String matricule) {
+        // Fetching data separately from each repository
+        List<Titularisation> titularisations = Titularisation_repo.findByMatricule(matricule);
+        List<Structure> structures = Structure_repo.findByMatricule(matricule);
+        List<Avancement> avancements = Avancement_repo.findByMatricule(matricule);
+
+        // Combine the fetched data into a list of arrays
+        // Assuming all three lists have the same size
+        List<Object[]> combinedData = new ArrayList<>();
+        for (int i = 0; i < titularisations.size(); i++) {
+            combinedData.add(new Object[]{titularisations.get(i), structures.get(i), avancements.get(i)});
         }
+
+        return combinedData;
+    }
+
+    public ResponseEntity<String> createCarriere( Structure structure,Avancement avancement, Titularisation titularisation) {
         try {
-            Carriere_repo.save(Carriere);
+            Date currentDate = new Date();
+
+            // Save Avancement
+            if (avancement != null) {
+                avancement.setSituation("activite");
+                if (avancement.getDateAjouter() == null) {
+                    avancement.setDateAjouter(currentDate);
+                }
+                Avancement_repo.save(avancement);
+            }
+
+            // Save Structure
+            if (structure != null) {
+                structure.setSituation("activite");
+                if (structure.getDateAjouter() == null) {
+                    structure.setDateAjouter(currentDate);
+                }
+                Structure_repo.save(structure);
+            }
+
+            // Save Titularisation
+            if (titularisation != null) {
+                titularisation.setSituation("activite");
+                if (titularisation.getDateAjouter() == null) {
+                    titularisation.setDateAjouter(currentDate);
+                }
+                Titularisation_repo.save(titularisation);
+            }
+
             return ResponseEntity.ok("Carriere created successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -30,9 +84,37 @@ public class Carrier_service {
         }
     }
 
+    public List<Structure> getAllStructuresByMatricule(String matricule) {
+        return Structure_repo.findByMatricule(matricule);
+    }
+    public List<Avancement> getAllAvancementsByMatricule(String matricule) {
+        return Avancement_repo.findByMatricule(matricule);
+    }
+    public List<Titularisation> getAllTitularisationsByMatricule(String matricule) {
+        return Titularisation_repo.findByMatricule(matricule);
+    }
 
-    public Optional<Carriere> afficher(int cin) {
-        return Carriere_repo.findById(cin);
+
+
+
+//    public ResponseEntity<String> create( Carriere Carriere) {
+//        Optional<Carriere> existingCarriere = Carriere_repo.findById(Carriere.getId());
+//        if (existingCarriere.isPresent()) {
+//            throw new RuntimeException("Carriere with the provided ID already exists");
+//        }
+//        try {
+//            Carriere_repo.save(Carriere);
+//            return ResponseEntity.ok("Carriere created successfully.");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body("Error in carriere ");
+//        }
+//    }
+
+
+
+    public Optional<Carriere> afficher(int id) {
+        return Carriere_repo.findById(id);
     }
 
     public List<Carriere> getAllCarrieres() {
@@ -62,40 +144,78 @@ public class Carrier_service {
         Carriere existingCarriere = carriereOptional.get();
 
         // Update fields with values from updatedCarriere
-        if (isNotBlank(updatedCarriere.getSalaire())) {
-            existingCarriere.setSalaire(updatedCarriere.getSalaire());
+        if (updatedCarriere.getGrilleDeSalaire() != null) {
+            existingCarriere.setGrilleDeSalaire(updatedCarriere.getGrilleDeSalaire());
         }
-        if (isNotBlank(updatedCarriere.getCategorie())) {
-            existingCarriere.setCategorie(updatedCarriere.getCategorie());
+        if (updatedCarriere.getGrilleDeDattes() != null) {
+            existingCarriere.setGrilleDeDattes(updatedCarriere.getGrilleDeDattes());
         }
-        if (updatedCarriere.getDateEntree() != null) {
-            existingCarriere.setDateEntree(updatedCarriere.getDateEntree());
+        if (updatedCarriere.getDateCategorie() != null) {
+            existingCarriere.setDateCategorie(updatedCarriere.getDateCategorie());
         }
-        if (isNotBlank(updatedCarriere.getFonction())) {
+        if (updatedCarriere.getCategorieProchaine() != null) {
+            existingCarriere.setCategorieProchaine(updatedCarriere.getCategorieProchaine());
+        }
+        if (updatedCarriere.getEchelle() != null) {
+            existingCarriere.setEchelle(updatedCarriere.getEchelle());
+        }
+        if (updatedCarriere.getDateEchelle() != null) {
+            existingCarriere.setDateEchelle(updatedCarriere.getDateEchelle());
+        }
+        if (updatedCarriere.getEchelleProchaine() != null) {
+            existingCarriere.setEchelleProchaine(updatedCarriere.getEchelleProchaine());
+        }
+        if (updatedCarriere.getEchelon() != null) {
+            existingCarriere.setEchelon(updatedCarriere.getEchelon());
+        }
+        if (updatedCarriere.getEchelonDeDates() != null) {
+            existingCarriere.setEchelonDeDates(updatedCarriere.getEchelonDeDates());
+        }
+        if (updatedCarriere.getDateRabattement() != null) {
+            existingCarriere.setDateRabattement(updatedCarriere.getDateRabattement());
+        }
+        if (updatedCarriere.getEchelonProchain() != null) {
+            existingCarriere.setEchelonProchain(updatedCarriere.getEchelonProchain());
+        }
+        if (updatedCarriere.getCollege() != null) {
+            existingCarriere.setCollege(updatedCarriere.getCollege());
+        }
+        if (updatedCarriere.getDateCollege() != null) {
+            existingCarriere.setDateCollege(updatedCarriere.getDateCollege());
+        }
+        if (updatedCarriere.getFonction() != null) {
             existingCarriere.setFonction(updatedCarriere.getFonction());
         }
-        if (isNotBlank(updatedCarriere.getGrade())) {
+        if (updatedCarriere.getDateFonction() != null) {
+            existingCarriere.setDateFonction(updatedCarriere.getDateFonction());
+        }
+        if (updatedCarriere.getGrade() != null) {
             existingCarriere.setGrade(updatedCarriere.getGrade());
         }
-        if (isNotBlank(updatedCarriere.getNatureDiplome())) {
-            existingCarriere.setNatureDiplome(updatedCarriere.getNatureDiplome());
+        if (updatedCarriere.getNoteDeDate() != null) {
+            existingCarriere.setNoteDeDate(updatedCarriere.getNoteDeDate());
         }
-        if (isNotBlank(updatedCarriere.getNiveauEducation())) {
-            existingCarriere.setNiveauEducation(updatedCarriere.getNiveauEducation());
+        if (updatedCarriere.getDateEssai() != null) {
+            existingCarriere.setDateEssai(updatedCarriere.getDateEssai());
         }
-        if (isNotBlank(updatedCarriere.getLanguesMaitrisees())) {
-            existingCarriere.setLanguesMaitrisees(updatedCarriere.getLanguesMaitrisees());
+        if (updatedCarriere.getTitularisation() != null) {
+            existingCarriere.setTitularisation(updatedCarriere.getTitularisation());
         }
-        if (isNotBlank(updatedCarriere.getExperienceProfessionnelle())) {
-            existingCarriere.setExperienceProfessionnelle(updatedCarriere.getExperienceProfessionnelle());
+        if (updatedCarriere.getGradeProchain() != null) {
+            existingCarriere.setGradeProchain(updatedCarriere.getGradeProchain());
         }
-        if (isNotBlank(updatedCarriere.getCompetencesSpecialisees())) {
-            existingCarriere.setCompetencesSpecialisees(updatedCarriere.getCompetencesSpecialisees());
+        if (updatedCarriere.getNatureDuDiplome() != null) {
+            existingCarriere.setNatureDuDiplome(updatedCarriere.getNatureDuDiplome());
+        }
+        if (updatedCarriere.getMotifDeDepart() != null) {
+            existingCarriere.setMotifDeDepart(updatedCarriere.getMotifDeDepart());
+        }
+        if (updatedCarriere.getRetraitePrevue() != null) {
+            existingCarriere.setRetraitePrevue(updatedCarriere.getRetraitePrevue());
         }
         if (updatedCarriere.getDateDepart() != null) {
             existingCarriere.setDateDepart(updatedCarriere.getDateDepart());
         }
-
         // Save the updated Carriere
         try {
             Carriere_repo.save(existingCarriere);
