@@ -12,7 +12,7 @@ public class Entreprise {
     @Id
     private String entrepriseName;
     private String entrepriseDescription;
-
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date dateInscriptionRegistreCommerce;
     private String affiliationCaisseSociale;
     private String numeroSecuriteSocial;

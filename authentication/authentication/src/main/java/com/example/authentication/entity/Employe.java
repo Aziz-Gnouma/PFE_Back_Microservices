@@ -1,11 +1,13 @@
 package com.example.authentication.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Employe {
 
@@ -15,19 +17,22 @@ public class Employe {
     private String matricule;
 
 
+    //@OneToMany(mappedBy = "employe", cascade = CascadeType.ALL)
+    //private Set<Child> enfants = new HashSet<>();
+
     private Integer phoneNumber;
     private String address;
 
     private String userFirstName;
     private String userLastName;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateOfBirth;
     private String placeOfBirth;
     private String gender;
     private String civility;
     @Column(name = "CIN")
     private int cin;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date cinDate;
     private String nationality;
     private String codePostal;
@@ -35,50 +40,51 @@ public class Employe {
     private String email;
     private String niveauEtude;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateDernierDiplome;
 
     //**** Informations administratives  **************************************//
     private String typeContrat;
     private String typeEmployeur;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateEntree;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateRecrutement;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateFinEssai;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dateTitularisation;
+
     private boolean chefFamille;
     private boolean salaireUnique;
     private boolean allocationFamille;
     private String numeroSecuriteSociale;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateAffiliation;
     private boolean exonereeSecuriteSociale;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateDebutExonereeSecuriteSociale;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateFinExonereeSecuriteSociale;
     private boolean affiliationAssuranceGroupe;
     private String nomAssurance;
     private String numeroAffiliationAssurance;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateAffiliationAssurance;
     private boolean affiliationMutuelle;
     private String nomMutuelle;
     private String numeroAffiliationMutuelle;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateAffiliationMutuelle;
     private String categorie;
     private String grade;
     private String classe;
     private String echelon;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateSituation;
     private String fonction;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateFonction;
     private String structureAttache;
     private String dateAffectation;
@@ -620,4 +626,14 @@ private String entrepriseName ;
     public void setMontantMutuelle(double montantMutuelle) {
         this.montantMutuelle = montantMutuelle;
     }
+
+//    public void addEnfant(Child enfant) {
+//        enfants.add(enfant);
+//        enfant.setEmploye(this);
+//    }
+//
+//    public void removeEnfant(Child enfant) {
+//        enfants.remove(enfant);
+//        enfant.setEmploye(null);
+//    }
 }

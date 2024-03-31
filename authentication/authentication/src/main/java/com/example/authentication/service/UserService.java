@@ -480,6 +480,8 @@ private  EntrepriseDao EntrepriseDao;
             employe.setNationality(user.getNationality());
             employe.setGender(user.getGender());
             employe.setAddress(user.getAddress());
+            employe.setNiveauEtude(user.getNiveauEtude());
+            employe.setDateDernierDiplome(user.getDateDernierDiplome());
             employe.setPhoneNumber(user.getPhoneNumber());
             employe.setCivility(user.getCivility());
 

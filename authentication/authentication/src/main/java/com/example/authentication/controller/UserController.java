@@ -134,16 +134,27 @@ public class UserController {
                 .collect(Collectors.toList());
     }
     @GetMapping("/Employe/{id}")
-    public Optional<Employe> getEmployeById(@PathVariable String id) {
-        return EmployeDao.findById(id);
-
+    public ResponseEntity<Employe> getEmployeById(@PathVariable String id) {
+        Optional<Employe> employeOptional = EmployeDao.findById(id);
+        if (employeOptional.isPresent()) {
+            Employe employe = employeOptional.get();
+            return ResponseEntity.ok(employe);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/user/{id}")
-    public Optional<User> getUserById(@PathVariable String id) {
-        return userDao.findById(id);
-
+    public ResponseEntity<User> getUserById(@PathVariable String id) {
+        Optional<User> userOptional = userDao.findById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     @GetMapping("/AllEntreprises")
     public List<Entreprise> getAllEntreprises() {

@@ -1,8 +1,10 @@
 package com.example.Carriere.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 @Entity
 public class Titularisation {
