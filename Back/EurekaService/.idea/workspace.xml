@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e67bf64-11a9-4c23-8ef5-f5c85fc6d9f3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/CategoryRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/FormationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FormationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/controller/FormationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Formation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/exception/FormationNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/exception/ResourceNotFoundException.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2YzOPG639yePCs8uwEClLKPCx9O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/azizg/OneDrive/Bureau/Microservices Spring PFE/EurekaService&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;036dcd2f02eeec10103fafd7637be3fd&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e67bf64-11a9-4c23-8ef5-f5c85fc6d9f3" name="Changes" comment="" />
+      <created>1701524915686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701524915686</updated>
+      <workItem from="1701524917389" duration="1328000" />
+      <workItem from="1701685901482" duration="597000" />
+      <workItem from="1701714035124" duration="1736000" />
+      <workItem from="1701805573184" duration="922000" />
+      <workItem from="1701875238403" duration="1192000" />
+      <workItem from="1701945583777" duration="1818000" />
+      <workItem from="1702031890004" duration="1218000" />
+      <workItem from="1702060378086" duration="598000" />
+      <workItem from="1702123936940" duration="1223000" />
+      <workItem from="1702209649400" duration="1211000" />
+      <workItem from="1702300184703" duration="657000" />
+      <workItem from="1702326859411" duration="655000" />
+      <workItem from="1702385597179" duration="441000" />
+      <workItem from="1702419024133" duration="675000" />
+      <workItem from="1702468554372" duration="1837000" />
+      <workItem from="1702511617845" duration="687000" />
+      <workItem from="1702544412694" duration="703000" />
+      <workItem from="1702552199336" duration="678000" />
+      <workItem from="1702595089680" duration="28000" />
+      <workItem from="1703123168812" duration="677000" />
+      <workItem from="1703606808846" duration="612000" />
+      <workItem from="1704111085254" duration="1674000" />
+      <workItem from="1704495809287" duration="1435000" />
+      <workItem from="1704703785157" duration="1634000" />
+      <workItem from="1707525901527" duration="1433000" />
+      <workItem from="1708307467635" duration="2422000" />
+      <workItem from="1708508971549" duration="625000" />
+      <workItem from="1708568884717" duration="628000" />
+      <workItem from="1708741268260" duration="1198000" />
+      <workItem from="1709097335178" duration="716000" />
+      <workItem from="1710518643781" duration="619000" />
+      <workItem from="1710556055469" duration="1230000" />
+      <workItem from="1710597388324" duration="1199000" />
+      <workItem from="1710933781377" duration="625000" />
+      <workItem from="1711344158816" duration="466000" />
+      <workItem from="1711344843892" duration="310000" />
+      <workItem from="1711345182336" duration="72000" />
+      <workItem from="1711345271789" duration="43000" />
+      <workItem from="1711346660398" duration="724000" />
+      <workItem from="1711347597195" duration="171000" />
+      <workItem from="1711347800253" duration="1000" />
+      <workItem from="1711416321471" duration="2091000" />
+      <workItem from="1712505317759" duration="83000" />
+      <workItem from="1714002851809" duration="40000" />
+      <workItem from="1715181008428" duration="9000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

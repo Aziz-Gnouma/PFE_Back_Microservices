@@ -286,148 +286,148 @@ private  EntrepriseDao EntrepriseDao;
                     employe.setDateTitularisation(updatedEmploye.getDateTitularisation());
                 }
 
-                if (updatedEmploye.isChefFamille()) {
-                    employe.setChefFamille(updatedEmploye.isChefFamille());
-                }
-
-                if (updatedEmploye.isSalaireUnique()) {
-                    employe.setSalaireUnique(updatedEmploye.isSalaireUnique());
-                }
-
-                if (updatedEmploye.isAllocationFamille()) {
-                    employe.setAllocationFamille(updatedEmploye.isAllocationFamille());
-                }
-
-                if (updatedEmploye.getNumeroSecuriteSociale() != null && !updatedEmploye.getNumeroSecuriteSociale().isEmpty()) {
-                    employe.setNumeroSecuriteSociale(updatedEmploye.getNumeroSecuriteSociale());
-                }
-
-                if (updatedEmploye.getDateAffiliation() != null) {
-                    employe.setDateAffiliation(updatedEmploye.getDateAffiliation());
-                }
-
-                if (updatedEmploye.isExonereeSecuriteSociale()) {
-                    employe.setExonereeSecuriteSociale(updatedEmploye.isExonereeSecuriteSociale());
-                }
-
-                if (updatedEmploye.getDateDebutExonereeSecuriteSociale() != null) {
-                    employe.setDateDebutExonereeSecuriteSociale(updatedEmploye.getDateDebutExonereeSecuriteSociale());
-                }
-
-                if (updatedEmploye.getDateFinExonereeSecuriteSociale() != null) {
-                    employe.setDateFinExonereeSecuriteSociale(updatedEmploye.getDateFinExonereeSecuriteSociale());
-                }
-
-                if (updatedEmploye.isAffiliationAssuranceGroupe()) {
-                    employe.setAffiliationAssuranceGroupe(updatedEmploye.isAffiliationAssuranceGroupe());
-                }
-
-                if (updatedEmploye.getNomAssurance() != null && !updatedEmploye.getNomAssurance().isEmpty()) {
-                    employe.setNomAssurance(updatedEmploye.getNomAssurance());
-                }
-
-                if (updatedEmploye.getNumeroAffiliationAssurance() != null && !updatedEmploye.getNumeroAffiliationAssurance().isEmpty()) {
-                    employe.setNumeroAffiliationAssurance(updatedEmploye.getNumeroAffiliationAssurance());
-                }
-                if (updatedEmploye.getDateAffiliationAssurance() != null) {
-                    employe.setDateAffiliationAssurance(updatedEmploye.getDateAffiliationAssurance());
-                }
-
-                if (updatedEmploye.isAffiliationMutuelle()) {
-                    employe.setAffiliationMutuelle(updatedEmploye.isAffiliationMutuelle());
-                }
-
-                if (updatedEmploye.getNomMutuelle() != null && !updatedEmploye.getNomMutuelle().isEmpty()) {
-                    employe.setNomMutuelle(updatedEmploye.getNomMutuelle());
-                }
-
-                if (updatedEmploye.getNumeroAffiliationMutuelle() != null && !updatedEmploye.getNumeroAffiliationMutuelle().isEmpty()) {
-                    employe.setNumeroAffiliationMutuelle(updatedEmploye.getNumeroAffiliationMutuelle());
-                }
-
-                if (updatedEmploye.getDateAffiliationMutuelle() != null) {
-                    employe.setDateAffiliationMutuelle(updatedEmploye.getDateAffiliationMutuelle());
-                }
-
-                if (updatedEmploye.getCategorie() != null && !updatedEmploye.getCategorie().isEmpty()) {
-                    employe.setCategorie(updatedEmploye.getCategorie());
-                }
-
-                if (updatedEmploye.getGrade() != null && !updatedEmploye.getGrade().isEmpty()) {
-                    employe.setGrade(updatedEmploye.getGrade());
-                }
-
-                if (updatedEmploye.getClasse() != null && !updatedEmploye.getClasse().isEmpty()) {
-                    employe.setClasse(updatedEmploye.getClasse());
-                }
-
-                if (updatedEmploye.getEchelon() != null && !updatedEmploye.getEchelon().isEmpty()) {
-                    employe.setEchelon(updatedEmploye.getEchelon());
-                }
-
-                if (updatedEmploye.getDateSituation() != null) {
-                    employe.setDateSituation(updatedEmploye.getDateSituation());
-                }
-
-                if (updatedEmploye.getFonction() != null && !updatedEmploye.getFonction().isEmpty()) {
-                    employe.setFonction(updatedEmploye.getFonction());
-                }
-
-                if (updatedEmploye.getDateFonction() != null) {
-                    employe.setDateFonction(updatedEmploye.getDateFonction());
-                }
-
-                if (updatedEmploye.getStructureAttache() != null && !updatedEmploye.getStructureAttache().isEmpty()) {
-                    employe.setStructureAttache(updatedEmploye.getStructureAttache());
-                }
-
-                if (updatedEmploye.getDateAffectation() != null && !updatedEmploye.getDateAffectation().isEmpty()) {
-                    employe.setDateAffectation(updatedEmploye.getDateAffectation());
-                }
-
-                if (updatedEmploye.getMotifDepart() != null && !updatedEmploye.getMotifDepart().isEmpty()) {
-                    employe.setMotifDepart(updatedEmploye.getMotifDepart());
-                }
-
-                if (updatedEmploye.getDateDepart() != null && !updatedEmploye.getDateDepart().isEmpty()) {
-                    employe.setDateDepart(updatedEmploye.getDateDepart());
-                }
-
-                if (updatedEmploye.getSituation() != 0) {
-                    employe.setSituation(updatedEmploye.getSituation());
-                }
-
-                if (updatedEmploye.getGrilleSalaire() != null && !updatedEmploye.getGrilleSalaire().isEmpty()) {
-                    employe.setGrilleSalaire(updatedEmploye.getGrilleSalaire());
-                }
-
-                if (updatedEmploye.getSalaireDeBase() != 0.0) {
-                    employe.setSalaireDeBase(updatedEmploye.getSalaireDeBase());
-                }
-
-                if (updatedEmploye.getModeDePaiement() != null && !updatedEmploye.getModeDePaiement().isEmpty()) {
-                    employe.setModeDePaiement(updatedEmploye.getModeDePaiement());
-                }
-
-                if (updatedEmploye.getNumeroCompte() != null && !updatedEmploye.getNumeroCompte().isEmpty()) {
-                    employe.setNumeroCompte(updatedEmploye.getNumeroCompte());
-                }
-
-                if (updatedEmploye.getNomBanque() != null && !updatedEmploye.getNomBanque().isEmpty()) {
-                    employe.setNomBanque(updatedEmploye.getNomBanque());
-                }
-
-                if (updatedEmploye.getNomAgence() != null && !updatedEmploye.getNomAgence().isEmpty()) {
-                    employe.setNomAgence(updatedEmploye.getNomAgence());
-                }
-
-                if (updatedEmploye.getMontantAssurance() != 0.0) {
-                    employe.setMontantAssurance(updatedEmploye.getMontantAssurance());
-                }
-
-                if (updatedEmploye.getMontantMutuelle() != 0.0) {
-                    employe.setMontantMutuelle(updatedEmploye.getMontantMutuelle());
-                }
+//                if (updatedEmploye.isChefFamille()) {
+//                    employe.setChefFamille(updatedEmploye.isChefFamille());
+//                }
+//
+//                if (updatedEmploye.isSalaireUnique()) {
+//                    employe.setSalaireUnique(updatedEmploye.isSalaireUnique());
+//                }
+//
+//                if (updatedEmploye.isAllocationFamille()) {
+//                    employe.setAllocationFamille(updatedEmploye.isAllocationFamille());
+//                }
+//
+//                if (updatedEmploye.getNumeroSecuriteSociale() != null && !updatedEmploye.getNumeroSecuriteSociale().isEmpty()) {
+//                    employe.setNumeroSecuriteSociale(updatedEmploye.getNumeroSecuriteSociale());
+//                }
+//
+//                if (updatedEmploye.getDateAffiliation() != null) {
+//                    employe.setDateAffiliation(updatedEmploye.getDateAffiliation());
+//                }
+//
+//                if (updatedEmploye.isExonereeSecuriteSociale()) {
+//                    employe.setExonereeSecuriteSociale(updatedEmploye.isExonereeSecuriteSociale());
+//                }
+//
+//                if (updatedEmploye.getDateDebutExonereeSecuriteSociale() != null) {
+//                    employe.setDateDebutExonereeSecuriteSociale(updatedEmploye.getDateDebutExonereeSecuriteSociale());
+//                }
+//
+//                if (updatedEmploye.getDateFinExonereeSecuriteSociale() != null) {
+//                    employe.setDateFinExonereeSecuriteSociale(updatedEmploye.getDateFinExonereeSecuriteSociale());
+//                }
+//
+//                if (updatedEmploye.isAffiliationAssuranceGroupe()) {
+//                    employe.setAffiliationAssuranceGroupe(updatedEmploye.isAffiliationAssuranceGroupe());
+//                }
+//
+//                if (updatedEmploye.getNomAssurance() != null && !updatedEmploye.getNomAssurance().isEmpty()) {
+//                    employe.setNomAssurance(updatedEmploye.getNomAssurance());
+//                }
+//
+//                if (updatedEmploye.getNumeroAffiliationAssurance() != null && !updatedEmploye.getNumeroAffiliationAssurance().isEmpty()) {
+//                    employe.setNumeroAffiliationAssurance(updatedEmploye.getNumeroAffiliationAssurance());
+//                }
+//                if (updatedEmploye.getDateAffiliationAssurance() != null) {
+//                    employe.setDateAffiliationAssurance(updatedEmploye.getDateAffiliationAssurance());
+//                }
+//
+//                if (updatedEmploye.isAffiliationMutuelle()) {
+//                    employe.setAffiliationMutuelle(updatedEmploye.isAffiliationMutuelle());
+//                }
+//
+//                if (updatedEmploye.getNomMutuelle() != null && !updatedEmploye.getNomMutuelle().isEmpty()) {
+//                    employe.setNomMutuelle(updatedEmploye.getNomMutuelle());
+//                }
+//
+//                if (updatedEmploye.getNumeroAffiliationMutuelle() != null && !updatedEmploye.getNumeroAffiliationMutuelle().isEmpty()) {
+//                    employe.setNumeroAffiliationMutuelle(updatedEmploye.getNumeroAffiliationMutuelle());
+//                }
+//
+//                if (updatedEmploye.getDateAffiliationMutuelle() != null) {
+//                    employe.setDateAffiliationMutuelle(updatedEmploye.getDateAffiliationMutuelle());
+//                }
+//
+//                if (updatedEmploye.getCategorie() != null && !updatedEmploye.getCategorie().isEmpty()) {
+//                    employe.setCategorie(updatedEmploye.getCategorie());
+//                }
+//
+//                if (updatedEmploye.getGrade() != null && !updatedEmploye.getGrade().isEmpty()) {
+//                    employe.setGrade(updatedEmploye.getGrade());
+//                }
+//
+//                if (updatedEmploye.getClasse() != null && !updatedEmploye.getClasse().isEmpty()) {
+//                    employe.setClasse(updatedEmploye.getClasse());
+//                }
+//
+//                if (updatedEmploye.getEchelon() != null && !updatedEmploye.getEchelon().isEmpty()) {
+//                    employe.setEchelon(updatedEmploye.getEchelon());
+//                }
+//
+//                if (updatedEmploye.getDateSituation() != null) {
+//                    employe.setDateSituation(updatedEmploye.getDateSituation());
+//                }
+//
+//                if (updatedEmploye.getFonction() != null && !updatedEmploye.getFonction().isEmpty()) {
+//                    employe.setFonction(updatedEmploye.getFonction());
+//                }
+//
+//                if (updatedEmploye.getDateFonction() != null) {
+//                    employe.setDateFonction(updatedEmploye.getDateFonction());
+//                }
+//
+//                if (updatedEmploye.getStructureAttache() != null && !updatedEmploye.getStructureAttache().isEmpty()) {
+//                    employe.setStructureAttache(updatedEmploye.getStructureAttache());
+//                }
+//
+//                if (updatedEmploye.getDateAffectation() != null && !updatedEmploye.getDateAffectation().isEmpty()) {
+//                    employe.setDateAffectation(updatedEmploye.getDateAffectation());
+//                }
+//
+//                if (updatedEmploye.getMotifDepart() != null && !updatedEmploye.getMotifDepart().isEmpty()) {
+//                    employe.setMotifDepart(updatedEmploye.getMotifDepart());
+//                }
+//
+//                if (updatedEmploye.getDateDepart() != null && !updatedEmploye.getDateDepart().isEmpty()) {
+//                    employe.setDateDepart(updatedEmploye.getDateDepart());
+//                }
+//
+//                if (updatedEmploye.getSituation() != 0) {
+//                    employe.setSituation(updatedEmploye.getSituation());
+//                }
+//
+//                if (updatedEmploye.getGrilleSalaire() != null && !updatedEmploye.getGrilleSalaire().isEmpty()) {
+//                    employe.setGrilleSalaire(updatedEmploye.getGrilleSalaire());
+//                }
+//
+//                if (updatedEmploye.getSalaireDeBase() != 0.0) {
+//                    employe.setSalaireDeBase(updatedEmploye.getSalaireDeBase());
+//                }
+//
+//                if (updatedEmploye.getModeDePaiement() != null && !updatedEmploye.getModeDePaiement().isEmpty()) {
+//                    employe.setModeDePaiement(updatedEmploye.getModeDePaiement());
+//                }
+//
+//                if (updatedEmploye.getNumeroCompte() != null && !updatedEmploye.getNumeroCompte().isEmpty()) {
+//                    employe.setNumeroCompte(updatedEmploye.getNumeroCompte());
+//                }
+//
+//                if (updatedEmploye.getNomBanque() != null && !updatedEmploye.getNomBanque().isEmpty()) {
+//                    employe.setNomBanque(updatedEmploye.getNomBanque());
+//                }
+//
+//                if (updatedEmploye.getNomAgence() != null && !updatedEmploye.getNomAgence().isEmpty()) {
+//                    employe.setNomAgence(updatedEmploye.getNomAgence());
+//                }
+//
+//                if (updatedEmploye.getMontantAssurance() != 0.0) {
+//                    employe.setMontantAssurance(updatedEmploye.getMontantAssurance());
+//                }
+//
+//                if (updatedEmploye.getMontantMutuelle() != 0.0) {
+//                    employe.setMontantMutuelle(updatedEmploye.getMontantMutuelle());
+//                }
 
 
                 // Similarly, update other attributes

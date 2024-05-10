@@ -24,13 +24,13 @@ public class User {
     private String civility;
     @Id
     private String matricule;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
 
     private Date dateOfBirth;
     private String placeOfBirth;
     private String nationality;
     private String gender;
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date cinDate;
     private Integer phoneNumber;
     private String address;
@@ -41,7 +41,7 @@ public class User {
     }
     private String niveauEtude;
 
-    @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateDernierDiplome;
 
     public String getNiveauEtude() {

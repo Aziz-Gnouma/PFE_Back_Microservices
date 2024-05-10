@@ -35,6 +35,8 @@ public class UserController {
     private EmployeDao EmployeDao;
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private UserDTO UserDTO;
 
     @PostConstruct
     public void initRoleAndUser() {
@@ -133,6 +135,71 @@ public class UserController {
                         .anyMatch(role -> "Gerant".equals(role.getRoleName())))
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/AllGRH/{Entreprise}")
+    public List<UserDTO> getAllGRH(@PathVariable String Entreprise) {
+        return userDao.findAll().stream()
+                .filter(user -> user.getRole().stream()
+                        .anyMatch(role -> "GRH".equals(role.getRoleName())))
+                .filter(user -> user.getEntreprise().stream()
+                        .anyMatch(entreprise -> Entreprise.equals(entreprise.getEntrepriseName())))
+                .map(user -> {
+                    UserDTO dto = new UserDTO();
+                    dto.setEmail(user.getEmail());
+                    dto.setPrivate_email(user.getPrivate_email());
+                    dto.setUserFirstName(user.getUserFirstName());
+                    dto.setUserLastName(user.getUserLastName());
+                    dto.setCin(user.getCin());
+                    dto.setUserPassword(user.getUserPassword());
+                    dto.setCivility(user.getCivility());
+                    dto.setMatricule(user.getMatricule());
+                    dto.setDateOfBirth(user.getDateOfBirth());
+                    dto.setPlaceOfBirth(user.getPlaceOfBirth());
+                    dto.setNationality(user.getNationality());
+                    dto.setGender(user.getGender());
+                    dto.setCinDate(user.getCinDate());
+                    dto.setPhoneNumber(user.getPhoneNumber());
+                    dto.setAddress(user.getAddress());
+                    dto.setPays(user.getPays());
+                    dto.setCodePostal(user.getCodePostal());
+                    dto.setNiveauEtude(user.getNiveauEtude());
+                    dto.setDateDernierDiplome(user.getDateDernierDiplome());
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+    @GetMapping("/AllEmploye/{Entreprise}")
+    public List<UserDTO> getAllEmploye(@PathVariable String Entreprise) {
+        return userDao.findAll().stream()
+                .filter(user -> user.getRole().stream()
+                        .anyMatch(role -> "User".equals(role.getRoleName())))
+                .filter(user -> user.getEntreprise().stream()
+                        .anyMatch(entreprise -> Entreprise.equals(entreprise.getEntrepriseName())))
+                .map(user -> {
+                    UserDTO dto = new UserDTO();
+                    dto.setEmail(user.getEmail());
+                    dto.setPrivate_email(user.getPrivate_email());
+                    dto.setUserFirstName(user.getUserFirstName());
+                    dto.setUserLastName(user.getUserLastName());
+                    dto.setCin(user.getCin());
+                    dto.setUserPassword(user.getUserPassword());
+                    dto.setCivility(user.getCivility());
+                    dto.setMatricule(user.getMatricule());
+                    dto.setDateOfBirth(user.getDateOfBirth());
+                    dto.setPlaceOfBirth(user.getPlaceOfBirth());
+                    dto.setNationality(user.getNationality());
+                    dto.setGender(user.getGender());
+                    dto.setCinDate(user.getCinDate());
+                    dto.setPhoneNumber(user.getPhoneNumber());
+                    dto.setAddress(user.getAddress());
+                    dto.setPays(user.getPays());
+                    dto.setCodePostal(user.getCodePostal());
+                    dto.setNiveauEtude(user.getNiveauEtude());
+                    dto.setDateDernierDiplome(user.getDateDernierDiplome());
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
     @GetMapping("/Employe/{id}")
     public ResponseEntity<Employe> getEmployeById(@PathVariable String id) {
         Optional<Employe> employeOptional = EmployeDao.findById(id);
@@ -216,7 +283,7 @@ public class UserController {
             return ResponseEntity.notFound().build(); // User not found
         }
     }
-    @PutMapping("/archiveUser/{id}")
+    @PutMapping("/archiveGerant/{id}")
     public ResponseEntity<String> archiveUserById(@PathVariable String id) {
         // Fetch the existing user by ID
         Optional<User> userOptional = userDao.findById(id);
@@ -230,6 +297,8 @@ public class UserController {
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(role);
             user.setRole(userRoles);
+            user.setEmail(null);
+
 
             // Set entreprise etat to -1
             user.getEntreprise().forEach(entreprise -> entreprise.setEtat(-1));
@@ -239,23 +308,20 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build();
         }}
-    @PutMapping("/desarchiveUser/{id}")
+    @PutMapping("/desarchiveGerant/{id}")
     public ResponseEntity<String> BackarchiveUserById(@PathVariable String id) {
-        // Fetch the existing user by ID
         Optional<User> userOptional = userDao.findById(id);
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
-            // Update user roles to 'Archiver'
             Role role = roleDao.findById("Gerant").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
 
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(role);
             user.setRole(userRoles);
-            user.setEmail(null);
+            user.setEmail(user.getPrivate_email());
 
-            // Set entreprise etat to -1
             user.getEntreprise().forEach(entreprise -> entreprise.setEtat(1));
 
             userDao.save(user);
@@ -265,7 +331,25 @@ public class UserController {
         }}
 
 
+    @PutMapping("/archiveGRH/{id}")
+    public ResponseEntity<String> archiveGRHById(@PathVariable String id) {
+        Optional<User> userOptional = userDao.findById(id);
 
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            Role role = roleDao.findById("Archiver").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
+
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(role);
+            user.setRole(userRoles);
+            user.setEmail(null);
+
+            userDao.save(user);
+            return ResponseEntity.ok("User archived successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }}
     @PutMapping("/desarchiveGRH/{id}")
     public ResponseEntity<String> DarchiveUserById(@PathVariable String id) {
         // Fetch the existing user by ID
@@ -280,9 +364,27 @@ public class UserController {
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(role);
             user.setRole(userRoles);
+            user.setEmail(user.getPrivate_email());
 
-            // Set entreprise etat to -1
-            user.getEntreprise().forEach(entreprise -> entreprise.setEtat(1));
+            userDao.save(user);
+            return ResponseEntity.ok("User desarchived successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }}
+    @PutMapping("/archiveEmploye/{id}")
+    public ResponseEntity<String> archiveEmployeById(@PathVariable String id) {
+        // Fetch the existing user by ID
+        Optional<User> userOptional = userDao.findById(id);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            Role role = roleDao.findById("Archiver").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
+
+            Set<Role> userRoles = new HashSet<>();
+            userRoles.add(role);
+            user.setRole(userRoles);
+            user.setEmail(null);
 
             userDao.save(user);
             return ResponseEntity.ok("User desarchived successfully");
@@ -304,7 +406,8 @@ public class UserController {
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(role);
             user.setRole(userRoles);
-            user.setEmail(null);
+            user.setEmail(user.getPrivate_email());
+
 
 
 

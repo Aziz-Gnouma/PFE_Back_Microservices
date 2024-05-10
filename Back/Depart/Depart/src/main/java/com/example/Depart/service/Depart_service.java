@@ -17,11 +17,12 @@ public class Depart_service {
 
     public ResponseEntity<String> create(Depart depart) {
         // Validate input data
-        if (depart.getCin() == null || Depart_repo.existsById(depart.getCin())) {
-            return ResponseEntity.badRequest().body("Invalid or duplicate Cin provided.");
-        }
+//        if (depart.getCin() == null || Depart_repo.existsById(depart.getCin())) {
+//            return ResponseEntity.badRequest().body("Invalid or duplicate Cin provided.");
+//        }
 
         try {
+            depart.setSituation("En attente");
             Depart_repo.save(depart);
             return ResponseEntity.ok("Depart created successfully.");
         } catch (Exception e) {
@@ -30,8 +31,37 @@ public class Depart_service {
         }
     }
 
-    public Optional<Depart> afficher(int cin) {
-        return Depart_repo.findById(cin);
+    public String acceptDeparture(Depart departure) {
+        Optional<Depart> optionalDeparture = Depart_repo.findById(departure.getDepartId());
+
+        if (optionalDeparture.isPresent()) {
+            Depart existingDeparture = optionalDeparture.get();
+
+            existingDeparture.setSituation("Confirmé");
+             Depart_repo.save(existingDeparture);
+            return ("Departure with ID " + departure.getDepartId() + " accepted.");
+        } else {
+            // Gérer le cas où le départ n'est pas trouvé
+            return ("Departure with ID " + departure.getDepartId() + " not found.");
+        }
+    }
+    public String annulerDeparture(Depart departure) {
+        Optional<Depart> optionalDeparture = Depart_repo.findById(departure.getDepartId());
+
+        if (optionalDeparture.isPresent()) {
+            Depart existingDeparture = optionalDeparture.get();
+
+            existingDeparture.setSituation("Refuser");
+            Depart_repo.save(existingDeparture);
+            return ("Departure with ID " + departure.getDepartId() + " annulée.");
+        } else {
+            // Gérer le cas où le départ n'est pas trouvé
+            return ("Departure with ID " + departure.getDepartId() + " not found.");
+        }
+    }
+
+        public Optional<Depart> afficher(String matricule) {
+        return Depart_repo.findByMatricule(matricule);
     }
 
     public List<Depart> getAllDeparts() {

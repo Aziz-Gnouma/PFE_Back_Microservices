@@ -1,8 +1,6 @@
 package com.example.Depart.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -11,8 +9,14 @@ public class Depart {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int departId;
+
     @Column(name = "cin")
     private Integer Cin;
+
+    @Column(name = "matricule")
+    private String matricule;
 
     @Column(name = "departDate")
     private Date DepartDate;
@@ -20,16 +24,29 @@ public class Depart {
     @Column(name = "departType")
     private String DepartType;
 
-    @Column(name = "etat")
-    private Integer Etat;
-
-    @Column(name = "exitReason")
-    private String ExitReason;
-
-    @Column(name = "rhRemarks")
-    private String RhRemarks;
+    @Column(name = "situation")
+    private String situation;
+    @Column(name = "employeeName")
+    private String employeeName;
+    @Column(name = "employeeEmail")
+    private String employeeEmail;
 
 
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getEmployeeEmail() {
+        return employeeEmail;
+    }
+
+    public void setEmployeeEmail(String employeeEmail) {
+        this.employeeEmail = employeeEmail;
+    }
 
     public Integer getCin() {
         return Cin;
@@ -39,28 +56,30 @@ public class Depart {
         Cin = cin;
     }
 
-    public Integer getEtat() {
-        return Etat;
+
+
+    public String getSituation() {
+        return situation;
     }
 
-    public void setEtat(Integer etat) {
-        Etat = etat;
+    public void setSituation(String situation) {
+        this.situation = situation;
     }
 
-    public String getExitReason() {
-        return ExitReason;
+    public String getMatricule() {
+        return matricule;
     }
 
-    public void setExitReason(String exitReason) {
-        ExitReason = exitReason;
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
     }
 
-    public String getRhRemarks() {
-        return RhRemarks;
+    public int getDepartId() {
+        return departId;
     }
 
-    public void setRhRemarks(String rhRemarks) {
-        RhRemarks = rhRemarks;
+    public void setDepartId(int departId) {
+        this.departId = departId;
     }
 
     public String getDepartType() {
