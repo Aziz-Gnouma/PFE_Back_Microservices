@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class OpenAIAPI {
-    private static final String OPENAI_API_KEY = "sk-proj-k3pcsgIi6yS1EkAd8BH1T3BlbkFJWYFLn3NQrxDgzPb6jTIB";
+    private static final String OPENAI_API_KEY = "${OPENAI_API_KEY}";
 
     public static void main(String[] args) throws Exception {
         String cvText = "Text from the CV you want to process";

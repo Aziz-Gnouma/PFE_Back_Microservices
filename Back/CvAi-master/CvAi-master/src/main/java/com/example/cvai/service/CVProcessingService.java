@@ -42,7 +42,7 @@ public class CVProcessingService {
 
 
     }
-    private static final String OPENAI_API_KEY = "sk-proj-k3pcsgIi6yS1EkAd8BH1T3BlbkFJWYFLn3NQrxDgzPb6jTIB";
+    private static final String OPENAI_API_KEY = "${OPENAI_API_KEY}";
     private static final String OPENAI_API_ENDPOINT = "https://api.openai.com/v1/completions";
     public String processCV(MultipartFile file) throws IOException {
         // Extract text from the file (you can use libraries like Apache PDFBox or Tesseract OCR)
