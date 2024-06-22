@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Entity
+@Entity(name = "Adminstrative")
 public class Employe {
 
 
@@ -17,31 +17,31 @@ public class Employe {
     private String matricule;
 
 
-    //@OneToMany(mappedBy = "employe", cascade = CascadeType.ALL)
-    //private Set<Child> enfants = new HashSet<>();
-
-    private Integer phoneNumber;
-    private String address;
-
-    private String userFirstName;
-    private String userLastName;
-    @JsonFormat(pattern="dd/MM/yyyy")
-    private Date dateOfBirth;
-    private String placeOfBirth;
-    private String gender;
-    private String civility;
-    @Column(name = "CIN")
-    private int cin;
-    @JsonFormat(pattern="dd/MM/yyyy")
-    private Date cinDate;
-    private String nationality;
-    private String codePostal;
-    private String pays;
-    private String email;
-    private String niveauEtude;
-
-    @JsonFormat(pattern="dd/MM/yyyy")
-    private Date dateDernierDiplome;
+//    //@OneToMany(mappedBy = "employe", cascade = CascadeType.ALL)
+//    //private Set<Child> enfants = new HashSet<>();
+//
+//    private Integer phoneNumber;
+//    private String address;
+//
+//    private String userFirstName;
+//    private String userLastName;
+//    @JsonFormat(pattern="dd/MM/yyyy")
+//    private Date dateOfBirth;
+//    private String placeOfBirth;
+//    private String gender;
+//    private String civility;
+//    @Column(name = "CIN")
+//    private int cin;
+//    @JsonFormat(pattern="dd/MM/yyyy")
+//    private Date cinDate;
+//    private String nationality;
+//    private String codePostal;
+//    private String pays;
+//    private String email;
+//    private String niveauEtude;
+//
+//    @JsonFormat(pattern="dd/MM/yyyy")
+//    private Date dateDernierDiplome;
 
     //**** Informations administratives  **************************************//
     private String typeContrat;
@@ -119,137 +119,137 @@ private String entrepriseName ;
         this.matricule = matricule;
     }
 
-    public Integer getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(Integer phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
-
-    public String getUserFirstName() {
-        return userFirstName;
-    }
-
-    public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;
-    }
-
-    public String getUserLastName() {
-        return userLastName;
-    }
-
-    public void setUserLastName(String userLastName) {
-        this.userLastName = userLastName;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getPlaceOfBirth() {
-        return placeOfBirth;
-    }
-
-    public void setPlaceOfBirth(String placeOfBirth) {
-        this.placeOfBirth = placeOfBirth;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getCivility() {
-        return civility;
-    }
-
-    public void setCivility(String civility) {
-        this.civility = civility;
-    }
-
-    public int getCin() {
-        return cin;
-    }
-
-    public void setCin(int cin) {
-        this.cin = cin;
-    }
-
-    public Date getCinDate() {
-        return cinDate;
-    }
-
-    public void setCinDate(Date cinDate) {
-        this.cinDate = cinDate;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-
-
-    public String getCodePostal() {
-        return codePostal;
-    }
-
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
-    }
-
-    public String getPays() {
-        return pays;
-    }
-
-    public void setPays(String pays) {
-        this.pays = pays;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNiveauEtude() {
-        return niveauEtude;
-    }
-
-    public void setNiveauEtude(String niveauEtude) {
-        this.niveauEtude = niveauEtude;
-    }
-
-    public Date getDateDernierDiplome() {
-        return dateDernierDiplome;
-    }
-
-    public void setDateDernierDiplome(Date dateDernierDiplome) {
-        this.dateDernierDiplome = dateDernierDiplome;
-    }
+//    public Integer getPhoneNumber() {
+//        return phoneNumber;
+//    }
+//
+//    public void setPhoneNumber(Integer phoneNumber) {
+//        this.phoneNumber = phoneNumber;
+//    }
+//
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
+//
+//
+//
+//    public String getUserFirstName() {
+//        return userFirstName;
+//    }
+//
+//    public void setUserFirstName(String userFirstName) {
+//        this.userFirstName = userFirstName;
+//    }
+//
+//    public String getUserLastName() {
+//        return userLastName;
+//    }
+//
+//    public void setUserLastName(String userLastName) {
+//        this.userLastName = userLastName;
+//    }
+//
+//    public Date getDateOfBirth() {
+//        return dateOfBirth;
+//    }
+//
+//    public void setDateOfBirth(Date dateOfBirth) {
+//        this.dateOfBirth = dateOfBirth;
+//    }
+//
+//    public String getPlaceOfBirth() {
+//        return placeOfBirth;
+//    }
+//
+//    public void setPlaceOfBirth(String placeOfBirth) {
+//        this.placeOfBirth = placeOfBirth;
+//    }
+//
+//    public String getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(String gender) {
+//        this.gender = gender;
+//    }
+//
+//    public String getCivility() {
+//        return civility;
+//    }
+//
+//    public void setCivility(String civility) {
+//        this.civility = civility;
+//    }
+//
+//    public int getCin() {
+//        return cin;
+//    }
+//
+//    public void setCin(int cin) {
+//        this.cin = cin;
+//    }
+//
+//    public Date getCinDate() {
+//        return cinDate;
+//    }
+//
+//    public void setCinDate(Date cinDate) {
+//        this.cinDate = cinDate;
+//    }
+//
+//    public String getNationality() {
+//        return nationality;
+//    }
+//
+//    public void setNationality(String nationality) {
+//        this.nationality = nationality;
+//    }
+//
+//
+//
+//    public String getCodePostal() {
+//        return codePostal;
+//    }
+//
+//    public void setCodePostal(String codePostal) {
+//        this.codePostal = codePostal;
+//    }
+//
+//    public String getPays() {
+//        return pays;
+//    }
+//
+//    public void setPays(String pays) {
+//        this.pays = pays;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+//
+//    public String getNiveauEtude() {
+//        return niveauEtude;
+//    }
+//
+//    public void setNiveauEtude(String niveauEtude) {
+//        this.niveauEtude = niveauEtude;
+//    }
+//
+//    public Date getDateDernierDiplome() {
+//        return dateDernierDiplome;
+//    }
+//
+//    public void setDateDernierDiplome(Date dateDernierDiplome) {
+//        this.dateDernierDiplome = dateDernierDiplome;
+//    }
 
     public String getTypeContrat() {
         return typeContrat;
@@ -298,5 +298,6 @@ private String entrepriseName ;
     public void setDateTitularisation(Date dateTitularisation) {
         this.dateTitularisation = dateTitularisation;
     }
+
 
 }

@@ -1,7 +1,10 @@
 package com.Salaire.Salaire.Services;
 
 import com.Salaire.Salaire.entity.Payslip;
+import com.Salaire.Salaire.entity.QRCodeGenerator;
+import com.Salaire.Salaire.entity.UserDetails;
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -16,10 +19,12 @@ import com.itextpdf.kernel.colors.Color;
 
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -30,8 +35,24 @@ import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.Salaire.Salaire.entity.DocumentUtils.generateDetailsString;
+
 @Service
 public class PDFGeneratorService {
+
+    private final QRCodeGenerator qrCodeGenerator;
+
+    @Autowired
+    public PDFGeneratorService(QRCodeGenerator qrCodeGenerator) {
+        this.qrCodeGenerator = qrCodeGenerator;
+    }
+
+    // Existing methods...
+
+    public byte[] generateQRCode(UserDetails userDetails) {
+        String details = generateDetailsString(userDetails);
+        return qrCodeGenerator.generate(details);
+    }
 
     Color black = new DeviceRgb(0, 0, 0);
     Color lightGray = new DeviceRgb(192, 192, 192);
@@ -39,6 +60,30 @@ public class PDFGeneratorService {
     Color borderColor = new DeviceRgb(221, 221, 221);
     Color backgroundColor = new DeviceRgb(221, 221, 221);
     public void generatePayslip(HttpServletResponse response, Payslip payslip) throws IOException {
+        ByteArrayOutputStream qrCodeStream = new ByteArrayOutputStream();
+
+        // Create a UserDetails object with appropriate data
+        UserDetails userDetails = new UserDetails();
+        userDetails.setMontantMensuel(payslip.getMontantMensuel());
+        userDetails.setCotisation(payslip.getCotisation());
+        userDetails.setSalaireImposable(payslip.getSalaireImposable());
+        userDetails.setIrppMensuel(payslip.getIrppMensuel());
+        userDetails.setCssMensuel(payslip.getCssMensuel());
+        userDetails.setSalaireNet(payslip.getSalaireNet());
+        userDetails.setDateAjouter(payslip.getDateAjouter());
+        userDetails.setSecteurPrive(payslip.isSecteurPrive());
+        userDetails.setNomEntreprise(payslip.getNomEntreprise());
+        userDetails.setAdresseEntreprise(payslip.getAdresseEntreprise());
+        userDetails.setAffiliationCss(payslip.getAffiliationCss());
+        userDetails.setCinEmploye(payslip.getCinEmploye());
+        userDetails.setNomEmploye(payslip.getNomEmploye());
+        userDetails.setAdresse(payslip.getAdresse());
+        userDetails.setNCss(payslip.getNCss());
+        userDetails.setSituationFamiliale(payslip.getSituationFamiliale());
+        userDetails.setFonction(payslip.getFonction());
+
+        // Generate QR code
+        generateQRCode(userDetails, qrCodeStream);
         PdfWriter pdfWriter = new PdfWriter(response.getOutputStream());
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         Document document = new Document(pdfDocument, PageSize.A4);
@@ -151,11 +196,6 @@ public class PDFGeneratorService {
         table2.setWidth(UnitValue.createPercentValue(100));
         table2.setBorder(new SolidBorder(black, 1));
 
-
-        // Add table headers
-
-
-        // Add table rows
         addCell(table2, "Salaire de base", font, true);
         addCell(table2, String.valueOf(payslip.getMontantMensuel()), font, false);
 
@@ -185,6 +225,11 @@ public class PDFGeneratorService {
         Paragraph signature = new Paragraph("Fait à Tunis le " + formattedDate2 + "\nSignature et cachet")
                 .setMarginTop(20f);
         document.add(signature);
+        Image qrCodeImage = new Image(ImageDataFactory.create(qrCodeStream.toByteArray()));
+        qrCodeImage.setWidth(105);
+        qrCodeImage.setHeight(105);
+        document.add(qrCodeImage);
+
 
         document.close();
     }
@@ -267,6 +312,16 @@ public class PDFGeneratorService {
 
 
         table.addCell(cell);
+    }
+    public void generateQRCode(UserDetails userDetails, ByteArrayOutputStream outputStream) {
+        String details = generateDetailsString(userDetails);
+        byte[] qrCode = qrCodeGenerator.generate(details);
+        try {
+            outputStream.write(qrCode);
+        } catch (IOException e) {
+            // Handle IO exception
+            e.printStackTrace();
+        }
     }
 
 }

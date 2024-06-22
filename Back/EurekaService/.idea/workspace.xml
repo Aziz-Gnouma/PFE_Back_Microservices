@@ -5,16 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e67bf64-11a9-4c23-8ef5-f5c85fc6d9f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/CategoryRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/FormationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FormationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/controller/FormationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Formation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/exception/FormationNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Formation/Formation/src/main/java/com/Pfe/Formation/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_beust_jcommander_1_82.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_6_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_github_jai_imageio_jai_imageio_core_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_google_zxing_core_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_google_zxing_javase_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_10_1_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_4_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__xerces_xercesImpl_2_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__xml_apis_xml_apis_1_3_04.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EurekaService.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Carriere/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Carriere/.idea/Carriere.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Carriere/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Carriere/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Carriere/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/EurekaService/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/EurekaService/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/Salaire/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/Salaire/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/Services/PDFGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/Services/PDFGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/controller/SalaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/controller/SalaireController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/entity/FicheDePaie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/Salaire/Salaire/src/main/java/com/Salaire/Salaire/entity/FicheDePaie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/EmployeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/EmployeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/EntrepriseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/EntrepriseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/RegistrationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/administrativeDap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/dao/administrativeDap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/Employe.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/Employe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/administrative.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/entity/administrative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/authentication/authentication/src/main/java/com/example/authentication/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back/gateway" beforeDir="false" afterPath="$PROJECT_DIR$/../Back/gateway" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/CategoryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/CategoryRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/FormationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Repo/FormationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FileUploadUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FormationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/Services/FormationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/controller/FormationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/controller/FormationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Formation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/entity/Formation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/exception/FormationNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/exception/FormationNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/exception/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Formation/Formation/src/main/java/com/Pfe/Formation/exception/ResourceNotFoundException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +56,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2YzOPG639yePCs8uwEClLKPCx9O" />
   <component name="ProjectViewState">
@@ -106,9 +133,16 @@
       <workItem from="1711347597195" duration="171000" />
       <workItem from="1711347800253" duration="1000" />
       <workItem from="1711416321471" duration="2091000" />
-      <workItem from="1712505317759" duration="83000" />
-      <workItem from="1714002851809" duration="40000" />
-      <workItem from="1715181008428" duration="9000" />
+      <workItem from="1712505404055" duration="664000" />
+      <workItem from="1712938773518" duration="1046000" />
+      <workItem from="1714002893717" duration="641000" />
+      <workItem from="1715181020023" duration="1285000" />
+      <workItem from="1716246801775" duration="1368000" />
+      <workItem from="1716462878860" duration="1170000" />
+      <workItem from="1716595663989" duration="1314000" />
+      <workItem from="1716765809690" duration="637000" />
+      <workItem from="1716817558367" duration="1791000" />
+      <workItem from="1716946098606" duration="1203000" />
     </task>
     <servers />
   </component>

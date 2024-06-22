@@ -3,10 +3,7 @@ package com.Salaire.Salaire.controller;
 import com.Salaire.Salaire.Repository.salaireRepo;
 import com.Salaire.Salaire.Services.PDFGeneratorService;
 import com.Salaire.Salaire.Services.SalaireService;
-import com.Salaire.Salaire.entity.FicheDePaie;
-import com.Salaire.Salaire.entity.Financieres;
-import com.Salaire.Salaire.entity.IRPPRequest;
-import com.Salaire.Salaire.entity.Payslip;
+import com.Salaire.Salaire.entity.*;
 import com.itextpdf.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +23,9 @@ import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.time.YearMonth;
 import java.util.*;
+
+import static com.Salaire.Salaire.entity.DocumentUtils.decodeDetails;
+import static com.Salaire.Salaire.entity.DocumentUtils.generateDetailsString;
 
 @RestController
 public class SalaireController {
@@ -79,6 +78,8 @@ public class SalaireController {
     @Autowired
     private salaireRepo SalaireRepo;
 
+    @Autowired
+    private QRCodeGenerator qrCodeGenerator; // Autowire QRCodeGenerator
 
     @GetMapping("/GenerateFiche/{matricule}/{yearMonth}")
     public void generatePayslip(@PathVariable String matricule, @PathVariable @DateTimeFormat(pattern = "yyyy-MM") YearMonth yearMonth, HttpServletResponse response) throws IOException, DocumentException {
@@ -95,7 +96,6 @@ public class SalaireController {
         FicheDePaie ficheDePaie = SalaireRepo.findByMatriculeAndMonthAndYear(matricule, month, year);
 
 
-        //  FicheDePaie ficheDePaie = SalaireRepo.findByMatricule(matricule);
         if (ficheDePaie != null) {
             Payslip payslip = new Payslip();
             payslip.setMontantMensuel(ficheDePaie.getMontantMensuel());
@@ -118,12 +118,9 @@ public class SalaireController {
             payslip.setFonction(ficheDePaie.getFonction());
 
             try {
-                // Generate the PDF
                 pdfGeneratorService.generatePayslip(response, payslip);
-                // Commit the response
                 response.getOutputStream().flush();
             } catch (IOException e) {
-                // Handle IO exceptions
                 e.printStackTrace();
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
@@ -137,5 +134,27 @@ public class SalaireController {
     public List<FicheDePaie> getAllFinancieresByMatricule() {
         return salaireService.getAllFicheDePaie();
     }
+
+
+    @PostMapping("/generateQR")
+    public ResponseEntity<byte[]> generateQRCode(@RequestBody UserDetails userDetails) {
+        String details = generateDetailsString(userDetails);
+        byte[] qrCode = qrCodeGenerator.generate(details);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        headers.setContentLength(qrCode.length);
+        return new ResponseEntity<>(qrCode, headers, HttpStatus.OK);
+    }
+
+
+
+
+    // Méthode pour décoder le code QR dans le contrôleur
+    @PostMapping("/decodeQR")
+    public ResponseEntity<UserDetails> decodeQRCode(@RequestBody String qrCodeData) {
+        UserDetails userDetails = decodeDetails(qrCodeData); // Method to extract details from QR code
+        return ResponseEntity.ok(userDetails);
+    }
+
 
 }

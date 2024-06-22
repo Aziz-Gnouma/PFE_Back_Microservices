@@ -14,7 +14,6 @@ public class FicheDePaie {
     private double irppMensuel;
     private double cssMensuel;
     private double salaireNet;
-
     private Date DateAjouter;
     @Column(name = "matricule")
     private String matricule;

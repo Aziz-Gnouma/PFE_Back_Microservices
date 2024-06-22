@@ -1,0 +1,246 @@
+java:5
+spring:4
+angular:3
+python:4
+machine learning:5
+docker:3
+kubernetes:4
+cloud computing:4
+javascript:3
+react:4
+vue.js:3
+agile methodology:4
+devops:5
+database management:4
+git:3
+restful web services:4
+microservices:4
+CI/CD:5
+Jenkins:4
+Amazon Web Services (AWS):4
+Microsoft Azure:4
+Google Cloud Platform (GCP):4
+HTML/CSS:3
+Linux:3
+Bash scripting:3
+Node.js:4
+React Native:4
+Flutter:4
+Scala:4
+Kotlin:4
+Swift:4
+Android Development:4
+iOS Development:4
+PHP:3
+Ruby:3
+C#:4
+.NET:4
+C/C++:4
+Go:4
+Rust:4
+Perl:3
+Haskell:4
+Erlang:4
+Django:4
+Flask:3
+Express.js:4
+ASP.NET:4
+Laravel:4
+Symfony:4
+CakePHP:3
+Spring Boot:4
+Quarkus:4
+Micronaut:4
+Play Framework:3
+Vue.js:4
+AngularJS:3
+Ember.js:3
+Meteor.js:3
+Bootstrap:3
+Tailwind CSS:3
+Sass:3
+LESS:3
+jQuery:3
+Vue.js:4
+React:4
+Angular:4
+Gatsby:4
+Next.js:4
+Redux:4
+MobX:3
+Vuex:3
+Agile:4
+Scrum:4
+Kanban:4
+Lean:3
+Continuous Integration:4
+Continuous Deployment:4
+Continuous Delivery:4
+GitLab CI/CD:4
+CircleCI:4
+Travis CI:4
+GitHub Actions:4
+Docker Compose:4
+Kubernetes:4
+Helm:3
+Terraform:4
+AWS CloudFormation:4
+Google Cloud Deployment Manager:4
+Azure Resource Manager:4
+Ansible:4
+Puppet:3
+Chef:3
+Nginx:3
+Apache:3
+MongoDB:4
+MySQL:4
+PostgreSQL:4
+SQLite:3
+Redis:4
+Microsoft SQL Server:4
+Oracle:4
+Cassandra:4
+Elasticsearch:4
+GraphQL:4
+RESTful API:4
+SOAP:3
+gRPC:4
+Apache Kafka:4
+RabbitMQ:4
+MQTT:3
+ActiveMQ:4
+ZeroMQ:4
+Apache Camel:4
+JMS:4
+AWS Lambda:4
+Google Cloud Functions:4
+Azure Functions:4
+Serverless Framework:4
+AWS:4
+Google Cloud:4
+Azure:4
+DigitalOcean:4
+Linode:3
+Heroku:4
+Vagrant:3
+VMware:3
+Docker:4
+Kubernetes:4
+Jenkins:4
+GitLab:4
+GitHub:4
+Bitbucket:4
+Subversion:3
+Mercurial:3
+JUnit:4
+TestNG:4
+Mockito:4
+Cucumber:4
+Selenium:4
+Jest:4
+Mocha:4
+Enzyme:3
+Jasmine:3
+Karma:3
+Python unittest:4
+pytest:4
+PHPUnit:4
+Jest:4
+Mocha:4
+Cypress:4
+JavaFX:3
+Java Swing:3
+Java AWT:3
+Java EE:4
+Java ME:4
+JavaFX:4
+Java 8:4
+Java 11:4
+Java 15:4
+Spring Framework:4
+Spring Boot:4
+Spring Security:4
+Spring Data:4
+Spring MVC:4
+Spring Cloud:4
+Spring Batch:4
+Hibernate:4
+JPA:4
+MyBatis:3
+Thymeleaf:3
+Freemarker:3
+Velocity:3
+XSLT:3
+JSF:3
+PrimeFaces:3
+RichFaces:3
+Apache Tomcat:3
+Jetty:3
+Jboss:3
+Wildfly:3
+Undertow:3
+Netty:4
+Grizzly:3
+Akka:4
+Vert.x:4
+RxJava:4
+Reactor:4
+Project Reactor:4
+Guava:3
+Apache Commons:3
+Jackson:4
+Gson:4
+Gson:4
+Moshi:4
+FastJson:4
+Protobuf:4
+Kryo:4
+Thrift:4
+Avro:4
+Hibernate:4
+MyBatis:4
+JdbcTemplate:4
+JPA:4
+Spring Data JPA:4
+Spring JDBC:4
+QueryDSL:3
+EBean:3
+jOOQ:4
+Flyway:3
+Liquibase:3
+Spring Security:4
+Apache Shiro:4
+Keycloak:4
+OAuth:4
+OpenID Connect:4
+JWT:4
+SSL/TLS:4
+Kerberos:4
+SAML:4
+Basic Auth:3
+Digest Auth:3
+OAuth 2.0:4
+OpenID Connect:4
+JWT:4
+LDAP:4
+OAuth 1.0a:4
+OAuth 2.0:4
+OpenID Connect:4
+JWT:4
+LDAP:4
+OAuth 1.0a:4
+OAuth 2.0:4
+OpenID Connect:4
+JWT:4
+LDAP:4
+OAuth 1.0a:4
+OAuth 2.0:4
+OpenID Connect:4
+JWT:4
+LDAP:4
+OAuth 1.0a:4
+OAuth 2.0:4
+OpenID Connect:4
+JWT:4
+LDAP:4
+OAuth 1.0a:4

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface EmployeDao extends JpaRepository<Employe, String> {
-    Optional<User> findByEmail(String email);
-    boolean existsByEmail(String email);
-    boolean existsByCin(int cin);
+//    Optional<User> findByEmail(String email);
+//    boolean existsByEmail(String email);
+//    boolean existsByCin(int cin);
 
 }

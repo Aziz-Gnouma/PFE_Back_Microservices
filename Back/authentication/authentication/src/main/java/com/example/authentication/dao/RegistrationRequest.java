@@ -2,7 +2,7 @@ package com.example.authentication.dao;
 
 import com.example.authentication.entity.Entreprise;
 import com.example.authentication.entity.User;
-import com.example.authentication.entity.administrative;
+//import com.example.authentication.entity.administrative;
 
 public class RegistrationRequest {
 
@@ -27,7 +27,7 @@ public class RegistrationRequest {
 
     private Entreprise entreprise;
 
-    private administrative  Administrative;
+//    private administrative  Administrative;
     private String entrepriseName;
 
     public String getEntrepriseName() {
@@ -38,13 +38,13 @@ public class RegistrationRequest {
         this.entrepriseName = entrepriseName;
     }
 
-    public administrative getAdministrative() {
-        return Administrative;
-    }
+//    public administrative getAdministrative() {
+//        return Administrative;
+//    }
 
-    public void setAdministrative(administrative administrative) {
-        Administrative = administrative;
-    }
+//    public void setAdministrative(administrative administrative) {
+//        Administrative = administrative;
+//    }
 
     public Entreprise getEntreprise() {
         return entreprise;

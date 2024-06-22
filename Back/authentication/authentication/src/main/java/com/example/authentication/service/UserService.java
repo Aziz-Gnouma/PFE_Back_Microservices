@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
@@ -74,6 +76,11 @@ private  EntrepriseDao EntrepriseDao;
         SGRHRole.setRoleName("SGRH");
         SGRHRole.setRoleDescription("Default role for newly created record");
         roleDao.save(SGRHRole);
+
+        Role NewDemande = new Role();
+        NewDemande.setRoleName("NewDemande");
+        NewDemande.setRoleDescription("Default role for NewDemande created record");
+        roleDao.save(NewDemande);
 
 
         Role ArchiverRole = new Role();
@@ -141,7 +148,7 @@ private  EntrepriseDao EntrepriseDao;
         }
 
 
-        Role role = roleDao.findById("User").orElseThrow(() -> new EntityNotFoundException("Role 'User' not found"));
+        Role role = roleDao.findById("NewDemande").orElseThrow(() -> new EntityNotFoundException("Role 'NewDemande' not found"));
 
         // Associate the role with the user
         Set<Role> userRoles = new HashSet<>();
@@ -169,98 +176,98 @@ private  EntrepriseDao EntrepriseDao;
                 Employe employe = optionalEmploye.get();
                 User user = userOptional.get();
 
-                if (updatedEmploye.getUserFirstName() != null && !updatedEmploye.getUserFirstName().isEmpty()) {
-                    employe.setUserFirstName(updatedEmploye.getUserFirstName());
-                    user.setUserFirstName(updatedEmploye.getUserFirstName());
-                }
-
-                if (updatedEmploye.getUserLastName() != null && !updatedEmploye.getUserLastName().isEmpty()) {
-                    employe.setUserLastName(updatedEmploye.getUserLastName());
-                    user.setUserLastName(updatedEmploye.getUserLastName());
-                }
-
-                if (updatedEmploye.getPhoneNumber() != null) {
-                    employe.setPhoneNumber(updatedEmploye.getPhoneNumber());
-                    user.setPhoneNumber(updatedEmploye.getPhoneNumber());
-                }
-
-                if (updatedEmploye.getAddress() != null && !updatedEmploye.getAddress().isEmpty()) {
-                    employe.setAddress(updatedEmploye.getAddress());
-                    user.setAddress(updatedEmploye.getAddress());
-
-                }
-
-                if (updatedEmploye.getDateOfBirth() != null) {
-                    employe.setDateOfBirth(updatedEmploye.getDateOfBirth());
-                    user.setDateOfBirth(updatedEmploye.getDateOfBirth());
-                }
-
-                if (updatedEmploye.getPlaceOfBirth() != null && !updatedEmploye.getPlaceOfBirth().isEmpty()) {
-                    employe.setPlaceOfBirth(updatedEmploye.getPlaceOfBirth());
-                    user.setPlaceOfBirth(updatedEmploye.getPlaceOfBirth());
-                }
-
-                if (updatedEmploye.getGender() != null && !updatedEmploye.getGender().isEmpty()) {
-                    employe.setGender(updatedEmploye.getGender());
-                    user.setGender(updatedEmploye.getGender());
-                }
-
-                if (updatedEmploye.getCivility() != null && !updatedEmploye.getCivility().isEmpty()) {
-                    employe.setCivility(updatedEmploye.getCivility());
-                    user.setCivility(updatedEmploye.getCivility());
-                }
-
-                if (updatedEmploye.getCin() != 0) {
-                    employe.setCin(updatedEmploye.getCin());
-                    user.setCin(updatedEmploye.getCin());
-                }
-
-                if (updatedEmploye.getCinDate() != null) {
-                    employe.setCinDate(updatedEmploye.getCinDate());
-                    user.setCinDate(updatedEmploye.getCinDate());
-                }
-
-                if (updatedEmploye.getNationality() != null && !updatedEmploye.getNationality().isEmpty()) {
-                    employe.setNationality(updatedEmploye.getNationality());
-                    user.setNationality(updatedEmploye.getNationality());
-                }
-
-                if (updatedEmploye.getAddress()!= null && !updatedEmploye.getAddress().isEmpty()) {
-                    employe.setAddress(updatedEmploye.getAddress());
-                    user.setAddress(updatedEmploye.getAddress());
-                }
-
-                if (updatedEmploye.getCodePostal() != null && !updatedEmploye.getCodePostal().isEmpty()) {
-                    employe.setCodePostal(updatedEmploye.getCodePostal());
-                    user.setCodePostal(updatedEmploye.getCodePostal());
-                }
-
-                if (updatedEmploye.getPays() != null && !updatedEmploye.getPays().isEmpty()) {
-                    employe.setPays(updatedEmploye.getPays());
-                    user.setPays(updatedEmploye.getPays());
-                }
-
-                if (updatedEmploye.getEmail() != null && !updatedEmploye.getEmail().isEmpty()) {
-                    employe.setEmail(updatedEmploye.getEmail());
-                    user.setEmail(updatedEmploye.getEmail());
-                    user.setPrivate_email(updatedEmploye.getEmail());
-
-                }
-
-                if (updatedEmploye.getNiveauEtude() != null && !updatedEmploye.getNiveauEtude().isEmpty()) {
-                    employe.setNiveauEtude(updatedEmploye.getNiveauEtude());
-                    user.setNiveauEtude(updatedEmploye.getNiveauEtude());
-                }
-
-                if (updatedEmploye.getDateDernierDiplome() != null) {
-                    employe.setDateDernierDiplome(updatedEmploye.getDateDernierDiplome());
-                    user.setDateDernierDiplome(updatedEmploye.getDateDernierDiplome());
-                }
-
-                if (updatedEmploye.getCodePostal() != null && !updatedEmploye.getCodePostal().isEmpty()) {
-                    employe.setCodePostal(updatedEmploye.getCodePostal());
-                    user.setCodePostal(updatedEmploye.getCodePostal());
-                }
+//                if (updatedEmploye.getUserFirstName() != null && !updatedEmploye.getUserFirstName().isEmpty()) {
+//                    employe.setUserFirstName(updatedEmploye.getUserFirstName());
+//                    user.setUserFirstName(updatedEmploye.getUserFirstName());
+//                }
+//
+//                if (updatedEmploye.getUserLastName() != null && !updatedEmploye.getUserLastName().isEmpty()) {
+//                    employe.setUserLastName(updatedEmploye.getUserLastName());
+//                    user.setUserLastName(updatedEmploye.getUserLastName());
+//                }
+//
+//                if (updatedEmploye.getPhoneNumber() != null) {
+//                    employe.setPhoneNumber(updatedEmploye.getPhoneNumber());
+//                    user.setPhoneNumber(updatedEmploye.getPhoneNumber());
+//                }
+//
+//                if (updatedEmploye.getAddress() != null && !updatedEmploye.getAddress().isEmpty()) {
+//                    employe.setAddress(updatedEmploye.getAddress());
+//                    user.setAddress(updatedEmploye.getAddress());
+//
+//                }
+//
+//                if (updatedEmploye.getDateOfBirth() != null) {
+//                    employe.setDateOfBirth(updatedEmploye.getDateOfBirth());
+//                    user.setDateOfBirth(updatedEmploye.getDateOfBirth());
+//                }
+//
+//                if (updatedEmploye.getPlaceOfBirth() != null && !updatedEmploye.getPlaceOfBirth().isEmpty()) {
+//                    employe.setPlaceOfBirth(updatedEmploye.getPlaceOfBirth());
+//                    user.setPlaceOfBirth(updatedEmploye.getPlaceOfBirth());
+//                }
+//
+//                if (updatedEmploye.getGender() != null && !updatedEmploye.getGender().isEmpty()) {
+//                    employe.setGender(updatedEmploye.getGender());
+//                    user.setGender(updatedEmploye.getGender());
+//                }
+//
+//                if (updatedEmploye.getCivility() != null && !updatedEmploye.getCivility().isEmpty()) {
+//                    employe.setCivility(updatedEmploye.getCivility());
+//                    user.setCivility(updatedEmploye.getCivility());
+//                }
+//
+//                if (updatedEmploye.getCin() != 0) {
+//                    employe.setCin(updatedEmploye.getCin());
+//                    user.setCin(updatedEmploye.getCin());
+//                }
+//
+//                if (updatedEmploye.getCinDate() != null) {
+//                    employe.setCinDate(updatedEmploye.getCinDate());
+//                    user.setCinDate(updatedEmploye.getCinDate());
+//                }
+//
+//                if (updatedEmploye.getNationality() != null && !updatedEmploye.getNationality().isEmpty()) {
+//                    employe.setNationality(updatedEmploye.getNationality());
+//                    user.setNationality(updatedEmploye.getNationality());
+//                }
+//
+//                if (updatedEmploye.getAddress()!= null && !updatedEmploye.getAddress().isEmpty()) {
+//                    employe.setAddress(updatedEmploye.getAddress());
+//                    user.setAddress(updatedEmploye.getAddress());
+//                }
+//
+//                if (updatedEmploye.getCodePostal() != null && !updatedEmploye.getCodePostal().isEmpty()) {
+//                    employe.setCodePostal(updatedEmploye.getCodePostal());
+//                    user.setCodePostal(updatedEmploye.getCodePostal());
+//                }
+//
+//                if (updatedEmploye.getPays() != null && !updatedEmploye.getPays().isEmpty()) {
+//                    employe.setPays(updatedEmploye.getPays());
+//                    user.setPays(updatedEmploye.getPays());
+//                }
+//
+//                if (updatedEmploye.getEmail() != null && !updatedEmploye.getEmail().isEmpty()) {
+//                    employe.setEmail(updatedEmploye.getEmail());
+//                    user.setEmail(updatedEmploye.getEmail());
+//                    user.setPrivate_email(updatedEmploye.getEmail());
+//
+//                }
+//
+//                if (updatedEmploye.getNiveauEtude() != null && !updatedEmploye.getNiveauEtude().isEmpty()) {
+//                    employe.setNiveauEtude(updatedEmploye.getNiveauEtude());
+//                    user.setNiveauEtude(updatedEmploye.getNiveauEtude());
+//                }
+//
+//                if (updatedEmploye.getDateDernierDiplome() != null) {
+//                    employe.setDateDernierDiplome(updatedEmploye.getDateDernierDiplome());
+//                    user.setDateDernierDiplome(updatedEmploye.getDateDernierDiplome());
+//                }
+//
+//                if (updatedEmploye.getCodePostal() != null && !updatedEmploye.getCodePostal().isEmpty()) {
+//                    employe.setCodePostal(updatedEmploye.getCodePostal());
+//                    user.setCodePostal(updatedEmploye.getCodePostal());
+//                }
 
                 if (updatedEmploye.getTypeContrat() != null && !updatedEmploye.getTypeContrat().isEmpty()) {
                     employe.setTypeContrat(updatedEmploye.getTypeContrat());
@@ -469,21 +476,21 @@ private  EntrepriseDao EntrepriseDao;
             Employe employe = new Employe();
             employe.setEntrepriseName(entrepriseName);
             employe.setMatricule(user.getMatricule());
-            employe.setUserFirstName(user.getUserFirstName());
-            employe.setUserLastName(user.getUserLastName());
-            employe.setCin(user.getCin()); // Assuming cin in Employe is a string
-            employe.setCinDate(user.getCinDate());
-            employe.setEmail(user.getEmail());
-            employe.setPays(user.getPays());
-            employe.setDateOfBirth(user.getDateOfBirth());
-            employe.setPlaceOfBirth(user.getPlaceOfBirth());
-            employe.setNationality(user.getNationality());
-            employe.setGender(user.getGender());
-            employe.setAddress(user.getAddress());
-            employe.setNiveauEtude(user.getNiveauEtude());
-            employe.setDateDernierDiplome(user.getDateDernierDiplome());
-            employe.setPhoneNumber(user.getPhoneNumber());
-            employe.setCivility(user.getCivility());
+//            employe.setUserFirstName(user.getUserFirstName());
+//            employe.setUserLastName(user.getUserLastName());
+//            employe.setCin(user.getCin()); // Assuming cin in Employe is a string
+//            employe.setCinDate(user.getCinDate());
+//            employe.setEmail(user.getEmail());
+//            employe.setPays(user.getPays());
+//            employe.setDateOfBirth(user.getDateOfBirth());
+//            employe.setPlaceOfBirth(user.getPlaceOfBirth());
+//            employe.setNationality(user.getNationality());
+//            employe.setGender(user.getGender());
+//            employe.setAddress(user.getAddress());
+//            employe.setNiveauEtude(user.getNiveauEtude());
+//            employe.setDateDernierDiplome(user.getDateDernierDiplome());
+//            employe.setPhoneNumber(user.getPhoneNumber());
+//            employe.setCivility(user.getCivility());
 
 //            Set<administrative> Administratives = new HashSet<>();
 //            Administratives.add(Administrative);
@@ -525,20 +532,20 @@ private  EntrepriseDao EntrepriseDao;
 
             if (updatedUser.getUserFirstName() != null && !updatedUser.getUserFirstName().isEmpty()) {
             user.setUserFirstName(updatedUser.getUserFirstName());
-                employee.setUserFirstName(updatedUser.getUserFirstName());
+//                employee.setUserFirstName(updatedUser.getUserFirstName());
             }
             if (updatedUser.getUserLastName() != null && !updatedUser.getUserLastName().isEmpty()) {
             user.setUserLastName(updatedUser.getUserLastName());
-                employee.setUserLastName(updatedUser.getUserLastName());
+//                employee.setUserLastName(updatedUser.getUserLastName());
         }
             if (updatedUser.getEmail() != null && !updatedUser.getEmail().isEmpty()) {
                 user.setEmail(updatedUser.getEmail());
                 user.setPrivate_email(updatedUser.getEmail());
-                employee.setEmail(updatedUser.getEmail());
+//                employee.setEmail(updatedUser.getEmail());
             }
             if (updatedUser.getCivility() != null) {
                 user.setCivility(updatedUser.getCivility());
-                employee.setCivility(updatedUser.getCivility());
+//                employee.setCivility(updatedUser.getCivility());
 
             }
             if (updatedUser.getMatricule() != null) {
@@ -546,37 +553,38 @@ private  EntrepriseDao EntrepriseDao;
             }
             if (updatedUser.getDateOfBirth() != null) {
                 user.setDateOfBirth(updatedUser.getDateOfBirth());
-                employee.setDateOfBirth(updatedUser.getDateOfBirth());
+//                employee.setDateOfBirth(updatedUser.getDateOfBirth());
             }
             if (updatedUser.getPlaceOfBirth() != null) {
                 user.setPlaceOfBirth(updatedUser.getPlaceOfBirth());
-                employee.setPlaceOfBirth(updatedUser.getPlaceOfBirth());
+//                employee.setPlaceOfBirth(updatedUser.getPlaceOfBirth());
             }
             if (updatedUser.getNationality() != null) {
                 user.setNationality(updatedUser.getNationality());
-                employee.setNationality(updatedUser.getNationality());
+//                employee.setNationality(updatedUser.getNationality());
             }
             if (updatedUser.getGender() != null) {
                 user.setGender(updatedUser.getGender());
-                employee.setGender(updatedUser.getGender());
+//                employee.setGender(updatedUser.getGender());
             }
             if (updatedUser.getCinDate() != null) {
                 user.setCinDate(updatedUser.getCinDate());
-                employee.setCinDate(updatedUser.getCinDate());
+//                employee.setCinDate(updatedUser.getCinDate());
             }
             if (updatedUser.getPhoneNumber() != null) {
                 user.setPhoneNumber(updatedUser.getPhoneNumber());
-                employee.setPhoneNumber(updatedUser.getPhoneNumber());
+//                employee.setPhoneNumber(updatedUser.getPhoneNumber());
             }
             if (updatedUser.getAddress() != null) {
                 user.setAddress(updatedUser.getAddress());
-                employee.setAddress(updatedUser.getAddress());
+//                employee.setAddress(updatedUser.getAddress());
 
             }
             if (updatedUser.getPays() != null) {
                 user.setPays(updatedUser.getPays());
-                employee.setPays(updatedUser.getPays());
+//                employee.setPays(updatedUser.getPays());
             }
+
             // Check if the password is provided before updating
             if (updatedUser.getUserPassword() != null && !updatedUser.getUserPassword().isEmpty()) {
                 user.setUserPassword(passwordEncoder.encode(updatedUser.getUserPassword())); // Encrypt the password
@@ -597,6 +605,41 @@ private  EntrepriseDao EntrepriseDao;
         }
     }
 
+    public ResponseEntity<String>  updateContratById(String matricule, Employe updatedContrat) {
+        // Fetch the existing user by ID
+        Optional<Employe> employeeOptional = EmployeDao.findById(matricule);
+
+
+        if ( employeeOptional.isPresent()) {
+            Employe employee = employeeOptional.get();
+
+            if (updatedContrat.getTypeContrat() != null && !updatedContrat.getTypeContrat().isEmpty()) {
+                employee.setTypeContrat(updatedContrat.getTypeContrat());
+            }
+            if (updatedContrat.getTypeEmployeur() != null && !updatedContrat.getTypeEmployeur().isEmpty()) {
+                employee.setTypeEmployeur(updatedContrat.getTypeEmployeur());
+            }
+            if (updatedContrat.getDateEntree() != null ) {
+
+                employee.setDateEntree(updatedContrat.getDateEntree());
+            }
+            if (updatedContrat.getDateRecrutement() != null) {
+                employee.setDateRecrutement(updatedContrat.getDateRecrutement());
+
+            }
+            if (updatedContrat.getDateFinEssai() != null) {
+                employee.setDateFinEssai(updatedContrat.getDateFinEssai());
+
+            }
+            Date currentDate = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+            employee.setDateTitularisation(currentDate);
+            EmployeDao.save(employee);
+
+            return ResponseEntity.ok("User information updated successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     public ResponseEntity<String> updateUser(String matricule, User updatedUser) {
         // Fetch the existing user by ID
@@ -625,5 +668,17 @@ private  EntrepriseDao EntrepriseDao;
 
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
+    }
+
+    public long getTotalEnterprises() {
+        return EntrepriseDao.countAllEntreprises();
+    }
+
+    public long getTotalUsers() {
+        return userDao.countAllUsers();
+    }
+
+    public long getTotalUsersWithRoleNewDemande() {
+        return userDao.countUsersByRoleName("NewDemande");
     }
 }

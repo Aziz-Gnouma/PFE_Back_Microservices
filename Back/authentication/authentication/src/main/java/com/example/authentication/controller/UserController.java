@@ -108,8 +108,13 @@ public class UserController {
         return userService.updateUserById(id, request.getUser(), request.getRoleName());
     }
 
+    @PutMapping("/updateContrat/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody Employe updatedContrat) {
+        return userService.updateContratById(id, updatedContrat);
 
-    @PutMapping("/updateUser/{id}")
+    }
+
+        @PutMapping("/updateUser/{id}")
     public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody User updatedUser) {
         return userService.updateUser(id, updatedUser);
 
@@ -201,11 +206,28 @@ public class UserController {
                 .collect(Collectors.toList());
     }
     @GetMapping("/Employe/{id}")
-    public ResponseEntity<Employe> getEmployeById(@PathVariable String id) {
-        Optional<Employe> employeOptional = EmployeDao.findById(id);
+    public ResponseEntity<User> getEmployeById(@PathVariable String id) {
+        Optional<User> employeOptional = userDao.findById(id);
+        Optional<Employe> employeOptional1 = EmployeDao.findById(id);
+
         if (employeOptional.isPresent()) {
-            Employe employe = employeOptional.get();
-            return ResponseEntity.ok(employe);
+            User User = employeOptional.get();
+            Employe Employe = employeOptional1.get();
+
+            return ResponseEntity.ok(User);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/Adminstrative/{id}")
+    public ResponseEntity<Employe> getAdminstrativeById(@PathVariable String id) {
+        Optional<Employe> employeOptional = EmployeDao.findById(id);
+
+        if (employeOptional.isPresent()) {
+          Employe Employe = employeOptional.get();
+
+            return ResponseEntity.ok(Employe);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -451,4 +473,20 @@ public class UserController {
         }
 
     }
+
+    @GetMapping("/totalEnterprises")
+    public long getTotalEnterprises() {
+        return userService.getTotalEnterprises();
+    }
+
+    @GetMapping("/totalUsers")
+    public long getTotalUsers() {
+        return userService.getTotalUsers();
+    }
+
+    @GetMapping("/totalUsersWithRoleNewDemande")
+    public long getTotalUsersWithRoleNewDemande() {
+        return userService.getTotalUsersWithRoleNewDemande();
+    }
+
 }
